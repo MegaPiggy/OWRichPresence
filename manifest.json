@@ -1,0 +1,8 @@
+{
+  "filename": "OWRichPresence.dll",
+  "author": "MegaPiggy",
+  "name": "Discord Rich Presence",
+  "uniqueName": "MegaPiggy.OWRichPresence",
+  "version": "1.0.0",
+  "owmlVersion": "2.5.2"
+}
