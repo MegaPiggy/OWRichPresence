@@ -7,6 +7,7 @@ namespace OWRichPresence
     {
 		public static string KeyToText(this ImageKey imageKey) => imageKey switch
 		{
+			// Vanilla
 			ImageKey.ashtwin => "Ash Twin",
 			ImageKey.attlerock => "Attlerock",
 			ImageKey.brittlehollow => "Brittle Hollow",
@@ -27,6 +28,24 @@ namespace OWRichPresence
 			ImageKey.sunstation => "Sun Station",
 			ImageKey.timberhearth => "Timber Hearth",
 			ImageKey.whitehole => "White Hole",
+
+			//New Horizons Examples
+			ImageKey.darkgateway => "Dark Gateway",
+			ImageKey.dauntingconfidant => "Daunting Confidant",
+			ImageKey.devilsmaw => "Devil's Maw",
+			ImageKey.frigidpygmy => "Frigid Pygmy",
+			ImageKey.giantsdeepexamples => "Giant's Deep",
+			ImageKey.lavatwin => "Lava Twin",
+			ImageKey.lavatwins => "Lava Twins",
+			ImageKey.lightgateway => "Light Gateway",
+			ImageKey.lunalure => "Luna Lure",
+			ImageKey.nightlight => "Night Light",
+			ImageKey.ringedjewel => "Ringed Jewel",
+			ImageKey.sequesteredluminary => "Sequestered Luminary",
+			ImageKey.snowball => "Snowball",
+			ImageKey.terralure => "Terra Lure",
+			ImageKey.wetrock => "Wetrock",
+
 			_ => string.Empty,
 		};
 
