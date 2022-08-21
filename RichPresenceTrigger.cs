@@ -18,7 +18,10 @@ namespace OWRichPresence
                     OWRichPresence.Instance._presenceStack.Push(OWRichPresence.Instance._shipPresence);
                 }
 
-                OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                if (OWRichPresence.TriggersActive)
+				{
+                    OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                }
             }
         }
 
@@ -34,7 +37,10 @@ namespace OWRichPresence
                     OWRichPresence.Instance._presenceStack.Push(OWRichPresence.Instance._shipPresence);
                 }
 
-                OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                if (OWRichPresence.TriggersActive)
+                {
+                    OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                }
             }
         }
     }

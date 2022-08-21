@@ -3,7 +3,6 @@ using OWML.ModHelper;
 using DiscordRPC;
 using DiscordRPC.Unity;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace OWRichPresence
 {
@@ -11,6 +10,7 @@ namespace OWRichPresence
 	{
 		public DiscordRpcClient client;
 		public static OWRichPresence Instance { get; private set; }
+		public static bool TriggersActive;
 
 		public ListStack<RichPresence> _presenceStack = new();
 		public RichPresence _shipPresence;
@@ -20,6 +20,8 @@ namespace OWRichPresence
 #else
 		private static bool debug = false;
 #endif
+
+		public override object GetApi() => new RichPresenceAPI();
 
 		private void Awake()
 		{
