@@ -179,6 +179,7 @@ namespace OWRichPresence
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence)
 		{
+			if (parent == null) return null;
 			var rpo = new GameObject("RichPresenceTrigger");
 			rpo.transform.SetParent(parent.transform, false);
 			rpo.SetActive(false);

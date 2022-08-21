@@ -8,6 +8,7 @@ namespace OWRichPresence
 
         public override void OnSectorOccupantAdded(SectorDetector detector)
         {
+            if (presence == null) return;
             if (detector.GetOccupantType() == DynamicOccupant.Player)
             {
                 OWRichPresence.Instance._presenceStack.Push(presence);
@@ -27,6 +28,7 @@ namespace OWRichPresence
 
         public override void OnSectorOccupantRemoved(SectorDetector detector)
         {
+            if (presence == null) return;
             if (detector.GetOccupantType() == DynamicOccupant.Player)
             {
                 OWRichPresence.Instance._presenceStack.Remove(presence);
