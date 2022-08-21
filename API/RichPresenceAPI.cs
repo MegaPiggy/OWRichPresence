@@ -17,11 +17,17 @@ public class RichPresenceAPI : IRichPresenceAPI
 		=> OWRichPresence.TriggersActive = active;
 
 	public GameObject CreateTrigger(GameObject parent, string message, string imageKey)
-		=> OWRichPresence.CreateTrigger(parent, message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey))?.gameObject;
+	{
+		if (!Enum.TryParse(imageKey, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
+
+		return OWRichPresence.CreateTrigger(parent, message, imageKeyEnum)?.gameObject;
+	}
 
 	public GameObject CreateTrigger(GameObject parent, Sector sector, string message, string imageKey)
 	{
-		var trigger = OWRichPresence.CreateTrigger(parent, message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey));
+		if (!Enum.TryParse(imageKey, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
+
+		var trigger = OWRichPresence.CreateTrigger(parent, message, imageKeyEnum);
 		trigger.SetSector(sector);
 		return trigger.gameObject;
 	}
