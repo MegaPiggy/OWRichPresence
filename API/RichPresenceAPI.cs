@@ -11,21 +11,21 @@ public class RichPresenceAPI : IRichPresenceAPI
 		=> OWRichPresence.SetPresence(message, (ImageKey)imageKey);
 
 	public void SetRichPresence(string message, string imageKey)
-		=> OWRichPresence.SetPresence(message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey));
+		=> OWRichPresence.SetPresence(message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey, true));
 
 	public void SetTriggerActivation(bool active)
 		=> OWRichPresence.TriggersActive = active;
 
 	public GameObject CreateTrigger(GameObject parent, string message, string imageKey)
 	{
-		if (!Enum.TryParse(imageKey, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
+		if (!Enum.TryParse(imageKey, true, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
 
 		return OWRichPresence.CreateTrigger(parent, message, imageKeyEnum)?.gameObject;
 	}
 
 	public GameObject CreateTrigger(GameObject parent, Sector sector, string message, string imageKey)
 	{
-		if (!Enum.TryParse(imageKey, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
+		if (!Enum.TryParse(imageKey, true, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
 
 		var trigger = OWRichPresence.CreateTrigger(parent, message, imageKeyEnum);
 		trigger.SetSector(sector);
@@ -33,5 +33,5 @@ public class RichPresenceAPI : IRichPresenceAPI
 	}
 
 	public void SetCurrentRootPresence(string message, string imageKey)
-		=> OWRichPresence.Instance.SetRootPresence(message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey));
+		=> OWRichPresence.Instance.SetRootPresence(message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey, true));
 }
