@@ -266,6 +266,8 @@ namespace OWRichPresence
 		timberhearth,
 		whitehole,
 
+		newhorizons = 99,
+
 		//New Horizons Examples
 		darkgateway = 100,
 		dauntingconfidant,
