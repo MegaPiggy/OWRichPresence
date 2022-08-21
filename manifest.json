@@ -4,5 +4,6 @@
   "name": "Discord Rich Presence",
   "uniqueName": "MegaPiggy.OWRichPresence",
   "version": "1.1.0",
-  "owmlVersion": "2.6.0"
+  "owmlVersion": "2.6.0",
+  "priorityLoad": true
 }
