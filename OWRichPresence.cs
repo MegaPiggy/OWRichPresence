@@ -10,16 +10,16 @@ namespace OWRichPresence
 	{
 		public DiscordRpcClient client;
 		public static OWRichPresence Instance { get; private set; }
-		public BaseRichPresence CurrentPresence { get; private set; }
+
+#if DEBUG
+		private static bool debug = true;
+#else
+		private static bool debug = false;
+#endif
 
 		private void Awake()
 		{
 			Instance = this;
-		}
-
-		private void OnClose(object sender, DiscordRPC.Message.CloseMessage e)
-		{
-			ConsoleWriteLine($"Closed! {e.Code}: {e.Reason}", MessageType.Warning);
 		}
 
 		private void Start()
@@ -29,28 +29,6 @@ namespace OWRichPresence
 
 			var logger = new OWConsoleLogger(MessageType.Debug);
 			client = new DiscordRpcClient("1010346259757944882", -1, logger, false, new UnityNamedPipe(logger));
-
-			client.OnConnectionEstablished += OnConnectionEstablished;
-
-			client.OnConnectionFailed += OnConnectionFailed;
-
-			client.OnError += OnError;
-
-			client.OnSpectate += OnSpectate;
-
-			client.OnJoinRequested += OnJoinRequested;
-
-			client.OnJoin += OnJoin;
-
-			client.OnReady += OnReady;
-
-			client.OnPresenceUpdate += OnPresenceUpdate;
-
-			client.OnClose += OnClose;
-
-			client.OnSubscribe += OnSubscribe;
-
-			client.OnUnsubscribe += OnUnsubscribe;
 
 			client.Initialize();
 
@@ -134,62 +112,6 @@ namespace OWRichPresence
 		private void Update() => client.Invoke();
 
 		private void OnApplicationQuit() => client.Deinitialize();
-
-		private void OnUnsubscribe(object sender, DiscordRPC.Message.UnsubscribeMessage e)
-		{
-			ConsoleWriteLine($"Unsubscribed to event {e.Event}", MessageType.Info);
-		}
-
-		private void OnSubscribe(object sender, DiscordRPC.Message.SubscribeMessage e)
-		{
-			ConsoleWriteLine($"Subscribed to event {e.Event}", MessageType.Info);
-		}
-
-		private void OnJoin(object sender, DiscordRPC.Message.JoinMessage e)
-		{
-			ConsoleWriteLine($"Joined with secret {e.Secret}", MessageType.Info);
-		}
-
-		private void OnJoinRequested(object sender, DiscordRPC.Message.JoinRequestMessage e)
-		{
-			ConsoleWriteLine($"Join requested from user {e.User.Username}", MessageType.Info);
-		}
-
-		private void OnSpectate(object sender, DiscordRPC.Message.SpectateMessage e)
-		{
-			ConsoleWriteLine($"Spectating with secret {e.Secret}", MessageType.Info);
-		}
-
-		private void OnError(object sender, DiscordRPC.Message.ErrorMessage e)
-		{
-			ConsoleWriteLine($"{e.Code}: {e.Message}", MessageType.Error);
-		}
-
-		private void OnConnectionEstablished(object sender, DiscordRPC.Message.ConnectionEstablishedMessage e)
-		{
-			ConsoleWriteLine($"Connection has been established with pipe #{e.ConnectedPipe}!", MessageType.Success);
-		}
-
-		private void OnConnectionFailed(object sender, DiscordRPC.Message.ConnectionFailedMessage e)
-		{
-			ConsoleWriteLine($"Failed to connect with pipe #{e.FailedPipe}!", MessageType.Error);
-		}
-
-		private void OnReady(object sender, DiscordRPC.Message.ReadyMessage e)
-		{
-			ConsoleWriteLine($"Received Ready from user {e.User.Username}", MessageType.Info);
-		}
-
-		private void OnPresenceUpdate(object sender, DiscordRPC.Message.PresenceMessage e)
-		{
-			CurrentPresence = e.Presence;
-		}
-
-#if DEBUG
-		private static bool debug = true;
-#else
-		private static bool debug = false;
-#endif
 
 		public void ConsoleWriteLine(string message, MessageType type)
 		{
