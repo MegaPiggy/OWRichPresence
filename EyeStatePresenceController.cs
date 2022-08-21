@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,11 @@ namespace OWRichPresence
 
         private void Start() => OnEyeStateChanged(Locator.GetEyeStateManager().GetState());
 
+        private RichPresence _currentPresence;
+
         private void OnEyeStateChanged(EyeState state)
         {
-            string details = "Exploring";
+            var details = "Exploring";
             switch (state)
             {
                 case EyeState.AboardVessel:
@@ -51,7 +54,11 @@ namespace OWRichPresence
                     details = "Big Bang";
                     break;
             }
-            OWRichPresence.SetPresence(details, ImageKey.eyeoftheuniverse);
+
+            OWRichPresence.Instance._presenceStack.Pop();
+            OWRichPresence.Instance._presenceStack.Push(_currentPresence);
+            _currentPresence = OWRichPresence.MakePresence(details, ImageKey.eyeoftheuniverse);
+            OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
         }
     }
 }
