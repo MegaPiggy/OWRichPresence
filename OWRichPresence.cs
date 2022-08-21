@@ -14,12 +14,16 @@ namespace OWRichPresence
 
 		public ListStack<RichPresence> _presenceStack = new();
 		public RichPresence _shipPresence;
+		public RichPresence _giantsDeepPresence;
 
 #if DEBUG
 		private static bool debug = true;
 #else
 		private static bool debug = false;
 #endif
+
+		private INewHorizons _newHorizons;
+		private bool _newHorizonsExamples;
 
 		public override object GetApi() => new RichPresenceAPI();
 
@@ -38,9 +42,47 @@ namespace OWRichPresence
 
 			client.Initialize();
 
+			_newHorizonsExamples = ModHelper.Interaction.ModExists("xen.NewHorizonsExamples");
+
 			OnSceneLoad(OWScene.TitleScreen);
 
+			_newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
+			if (_newHorizons != null) _newHorizons.GetStarSystemLoadedEvent().AddListener(OnStarSystemLoaded);
+
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
+		}
+
+		private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
+		private RichPresenceTrigger CreateTriggerWithNH(string planetName, string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
+		private RichPresenceTrigger CreateTriggerWithNH(string planetName, RichPresence richPresence) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, richPresence);
+
+		private void OnStarSystemLoaded(string starSystem)
+		{
+			if (_newHorizonsExamples)
+			{
+				if (starSystem == "SolarSystem")
+				{
+					UpdatePresence(_giantsDeepPresence, ImageKey.giantsdeepexamples);
+					CreateTriggerWithNH("Observing the Dark Gateway.", ImageKey.darkgateway);
+					CreateTriggerWithNH("Observing Devil's Maw.", ImageKey.devilsmaw);
+					CreateTriggerWithNH("Exploring the Lava Twins.", ImageKey.lavatwins);
+					CreateTriggerWithNH("Lava 1", "Exploring Lava 1.", ImageKey.lavatwin);
+					CreateTriggerWithNH("Lava 2", "Exploring Lava 2.", ImageKey.lavatwin);
+					CreateTriggerWithNH("Observing the Light Gateway.", ImageKey.lightgateway);
+					CreateTriggerWithNH("Exploring Luna Lure.", ImageKey.lunalure);
+					CreateTriggerWithNH("Burning up near Night Light.", ImageKey.nightlight);
+					CreateTriggerWithNH("Exploring Ringed Jewel.", ImageKey.ringedjewel);
+					CreateTriggerWithNH("Exploring Snowball.", ImageKey.snowball);
+					CreateTriggerWithNH("Exploring Terra Lure.", ImageKey.terralure);
+					CreateTriggerWithNH("Exploring Wetrock.", ImageKey.wetrock);
+				}
+				else if (starSystem == "xen.NewHorizonsExamples")
+				{
+					CreateTriggerWithNH("Burning up near Sequestered Luminary.", ImageKey.sequesteredluminary);
+					CreateTriggerWithNH("Exploring Daunting Confidant.", ImageKey.dauntingconfidant);
+					CreateTriggerWithNH("Exploring Frigid Pygmy.", ImageKey.frigidpygmy);
+				}
+			}
 		}
 
 		private void OnSceneLoad(OWScene loadScene)
@@ -63,7 +105,8 @@ namespace OWRichPresence
 					CreateTrigger("QuantumMoon_Body/Sector_QuantumMoon", "Exploring somewhere strange...", ImageKey.quantummoon);
 					CreateTrigger("DreamWorld_Body/Sector_DreamWorld", "Exploring somewhere strange...", ImageKey.dreamworld);
 					CreateTrigger("RingWorld_Body/Sector_RingWorld", "Exploring somewhere strange...", ImageKey.stranger);
-					CreateTrigger("GiantsDeep_Body/Sector_GD", "Exploring Giant's Deep.", ImageKey.giantsdeep);
+					_giantsDeepPresence = MakePresence("Exploring Giant's Deep.", ImageKey.giantsdeep);
+					CreateTrigger("GiantsDeep_Body/Sector_GD", _giantsDeepPresence);
 					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", ImageKey.darkbramble);
 					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
 					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
@@ -155,12 +198,33 @@ namespace OWRichPresence
 			}
 		};
 
+		public static void UpdatePresence(RichPresence presence, string details, ImageKey imageKey)
+		{
+			UpdatePresence(presence, details);
+			UpdatePresence(presence, imageKey);
+		}
+
+		public static void UpdatePresence(RichPresence presence, string details)
+		{
+			presence.Details = details;
+		}
+
+		public static void UpdatePresence(RichPresence presence, ImageKey imageKey)
+		{
+			presence.Assets = new Assets
+			{
+				LargeImageKey = imageKey.ToString(),
+				LargeImageText = imageKey.KeyToText()
+			};
+		}
+
 		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
 		public static void SetPresence(RichPresence richPresence) => Instance.client.SetPresence(richPresence);
 	}
 
 	public enum ImageKey
 	{
+		// Vanilla
 		ashtwin,
 		attlerock,
 		brittlehollow,
@@ -181,6 +245,23 @@ namespace OWRichPresence
 		sun,
 		sunstation,
 		timberhearth,
-		whitehole
+		whitehole,
+
+		//New Horizons Examples
+		darkgateway = 100,
+		dauntingconfidant,
+		devilsmaw,
+		frigidpygmy,
+		giantsdeepexamples,
+		lavatwin,
+		lavatwins,
+		lightgateway,
+		lunalure,
+		nightlight,
+		ringedjewel,
+		sequesteredluminary,
+		snowball,
+		terralure,
+		wetrock,
 	}
 }
