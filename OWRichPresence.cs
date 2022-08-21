@@ -47,44 +47,12 @@ namespace OWRichPresence
 
 			OnSceneLoad(OWScene.TitleScreen);
 
-			_newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
-			if (_newHorizons != null) _newHorizons.GetStarSystemLoadedEvent().AddListener(OnStarSystemLoaded);
-
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
 		}
 
 		private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, RichPresence richPresence) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, richPresence);
-
-		private void OnStarSystemLoaded(string starSystem)
-		{
-			if (_newHorizonsExamples)
-			{
-				if (starSystem == "SolarSystem")
-				{
-					UpdatePresence(_giantsDeepPresence, ImageKey.giantsdeepexamples);
-					CreateTriggerWithNH("Observing the Dark Gateway.", ImageKey.darkgateway);
-					CreateTriggerWithNH("Observing Devil's Maw.", ImageKey.devilsmaw);
-					CreateTriggerWithNH("Exploring the Lava Twins.", ImageKey.lavatwins);
-					CreateTriggerWithNH("Lava 1", "Exploring Lava 1.", ImageKey.lavatwin);
-					CreateTriggerWithNH("Lava 2", "Exploring Lava 2.", ImageKey.lavatwin);
-					CreateTriggerWithNH("Observing the Light Gateway.", ImageKey.lightgateway);
-					CreateTriggerWithNH("Exploring Luna Lure.", ImageKey.lunalure);
-					CreateTriggerWithNH("Burning up near Night Light.", ImageKey.nightlight);
-					CreateTriggerWithNH("Exploring Ringed Jewel.", ImageKey.ringedjewel);
-					CreateTriggerWithNH("Exploring Snowball.", ImageKey.snowball);
-					CreateTriggerWithNH("Exploring Terra Lure.", ImageKey.terralure);
-					CreateTriggerWithNH("Exploring Wetrock.", ImageKey.wetrock);
-				}
-				else if (starSystem == "xen.NewHorizonsExamples")
-				{
-					CreateTriggerWithNH("Burning up near Sequestered Luminary.", ImageKey.sequesteredluminary);
-					CreateTriggerWithNH("Exploring Daunting Confidant.", ImageKey.dauntingconfidant);
-					CreateTriggerWithNH("Exploring Frigid Pygmy.", ImageKey.frigidpygmy);
-				}
-			}
-		}
 
 		private void OnSceneLoad(OWScene loadScene)
 		{
