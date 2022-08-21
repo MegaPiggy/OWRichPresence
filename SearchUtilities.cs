@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,7 +44,7 @@ namespace OWRichPresence
                     return null;
                 }
 
-                var childPath = names.Skip(1).Join(delimiter: "/");
+                var childPath = string.Join("/", names.Skip(1));
                 go = root.FindChild(childPath);
                 if (go == null)
                 {

@@ -5,89 +5,47 @@ namespace OWRichPresence
 {
     public static class Extensions
     {
-        public static string KeyToText(this ImageKey imageKey)
-        {
-            switch (imageKey)
-            {
-                case ImageKey.ashtwin:
-                    return "Ash Twin";
-                case ImageKey.attlerock:
-                    return "Attlerock";
-                case ImageKey.brittlehollow:
-                    return "Brittle Hollow";
-                case ImageKey.darkbramble:
-                    return "Dark Bramble";
-                case ImageKey.dreamworld:
-                    return "Dreamworld";
-                case ImageKey.embertwin:
-                    return "Ember Twin";
-                case ImageKey.eyeoftheuniverse:
-                    return "Eye of the Universe";
-                case ImageKey.giantsdeep:
-                    return "Giant's Deep";
-                case ImageKey.hollowslantern:
-                    return "Hollow's Lantern";
-                case ImageKey.interloper:
-                    return "Interloper";
-                case ImageKey.orbitalprobecannon:
-                    return "Orbital Probe Cannon";
-                case ImageKey.outerwilds:
-                    return "Outer Wilds Ventures";
-                case ImageKey.quantummoon:
-                    return "Quantum Moon";
-                case ImageKey.ship:
-                    return "Ship";
-                case ImageKey.skyshutter:
-                    return "Sky Shutter Satellite";
-                case ImageKey.stranger:
-                    return "Stranger";
-                case ImageKey.sun:
-                    return "Sun";
-                case ImageKey.sunstation:
-                    return "Sun Station";
-                case ImageKey.timberhearth:
-                    return "Timber Hearth";
-                case ImageKey.whitehole:
-                    return "White Hole";
-                default:
-                    return string.Empty;
-            }
-        }
+		public static string KeyToText(this ImageKey imageKey) => imageKey switch
+		{
+			ImageKey.ashtwin => "Ash Twin",
+			ImageKey.attlerock => "Attlerock",
+			ImageKey.brittlehollow => "Brittle Hollow",
+			ImageKey.darkbramble => "Dark Bramble",
+			ImageKey.dreamworld => "Dreamworld",
+			ImageKey.embertwin => "Ember Twin",
+			ImageKey.eyeoftheuniverse => "Eye of the Universe",
+			ImageKey.giantsdeep => "Giant's Deep",
+			ImageKey.hollowslantern => "Hollow's Lantern",
+			ImageKey.interloper => "Interloper",
+			ImageKey.orbitalprobecannon => "Orbital Probe Cannon",
+			ImageKey.outerwilds => "Outer Wilds Ventures",
+			ImageKey.quantummoon => "Quantum Moon",
+			ImageKey.ship => "Ship",
+			ImageKey.skyshutter => "Sky Shutter Satellite",
+			ImageKey.stranger => "Stranger",
+			ImageKey.sun => "Sun",
+			ImageKey.sunstation => "Sun Station",
+			ImageKey.timberhearth => "Timber Hearth",
+			ImageKey.whitehole => "White Hole",
+			_ => string.Empty,
+		};
 
-        public static MessageType DiscordToOWML(this LogLevel level)
-        {
-            switch (level)
-            {
-                case LogLevel.Trace:
-                    return MessageType.Debug;
-                case LogLevel.Info:
-                    return MessageType.Info;
-                case LogLevel.Warning:
-                    return MessageType.Warning;
-                case LogLevel.Error:
-                    return MessageType.Error;
-                case LogLevel.None:
-                default:
-                    return MessageType.Message;
-            }
-        }
+		public static MessageType DiscordToOWML(this LogLevel level) => level switch
+		{
+			LogLevel.Trace => MessageType.Debug,
+			LogLevel.Info => MessageType.Info,
+			LogLevel.Warning => MessageType.Warning,
+			LogLevel.Error => MessageType.Error,
+			_ => MessageType.Message,
+		};
 
-        public static LogLevel OWMLToDiscord(this MessageType type)
-        {
-            switch (type)
-            {
-                case MessageType.Debug:
-                    return LogLevel.Trace;
-                case MessageType.Info:
-                    return LogLevel.Info;
-                case MessageType.Warning:
-                    return LogLevel.Warning;
-                case MessageType.Error:
-                    return LogLevel.Error;
-                case MessageType.Message:
-                default:
-                    return LogLevel.None;
-            }
-        }
-    }
+		public static LogLevel OWMLToDiscord(this MessageType type) => type switch
+		{
+			MessageType.Debug => LogLevel.Trace,
+			MessageType.Info => LogLevel.Info,
+			MessageType.Warning => LogLevel.Warning,
+			MessageType.Error => LogLevel.Error,
+			_ => LogLevel.None,
+		};
+	}
 }

@@ -1,21 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DiscordRPC;
 
 namespace OWRichPresence
 {
     public class RichPresenceTrigger : SectoredMonoBehaviour
     {
-        public string details;
-        public ImageKey imageKey;
+        public RichPresence presence;
 
         public override void OnSectorOccupantAdded(SectorDetector detector)
         {
             if (detector.GetOccupantType() == DynamicOccupant.Player)
             {
-                OWRichPresence.SetPresence(details, imageKey);
+                OWRichPresence.Instance._presenceStack.Push(presence);
+
+                if (PlayerState.IsInsideShip() && presence != OWRichPresence.Instance._shipPresence)
+				{
+                    OWRichPresence.Instance._presenceStack.Remove(OWRichPresence.Instance._shipPresence);
+                    OWRichPresence.Instance._presenceStack.Push(OWRichPresence.Instance._shipPresence);
+                }
+
+                if (OWRichPresence.TriggersActive)
+				{
+                    OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                }
             }
         }
 
@@ -23,7 +29,18 @@ namespace OWRichPresence
         {
             if (detector.GetOccupantType() == DynamicOccupant.Player)
             {
-                OWRichPresence.SetPresence("Exploring the solar system", ImageKey.sun);
+                OWRichPresence.Instance._presenceStack.Remove(presence);
+
+                if (PlayerState.IsInsideShip() && presence != OWRichPresence.Instance._shipPresence)
+                {
+                    OWRichPresence.Instance._presenceStack.Remove(OWRichPresence.Instance._shipPresence);
+                    OWRichPresence.Instance._presenceStack.Push(OWRichPresence.Instance._shipPresence);
+                }
+
+                if (OWRichPresence.TriggersActive)
+                {
+                    OWRichPresence.SetPresence(OWRichPresence.Instance._presenceStack.Peek());
+                }
             }
         }
     }
