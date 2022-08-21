@@ -129,16 +129,7 @@ namespace OWRichPresence
 
 		public static void WriteLine(string message, MessageType type) => Instance.ConsoleWriteLine(message, type);
 
-		public static RichPresenceTrigger CreateTrigger(GameObject parent, string details, ImageKey imageKey)
-		{
-			var rpo = new GameObject("RichPresenceTrigger");
-			rpo.transform.SetParent(parent.transform, false);
-			rpo.SetActive(false);
-			var rpt = rpo.AddComponent<RichPresenceTrigger>();
-			rpt.presence = MakePresence(details, imageKey);
-			rpo.SetActive(true);
-			return rpt;
-		}
+		public static RichPresenceTrigger CreateTrigger(GameObject parent, string details, ImageKey imageKey) => CreateTrigger(parent, MakePresence(details, imageKey));
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence)
 		{
