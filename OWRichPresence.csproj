@@ -16,9 +16,7 @@
     <ModName>$(Authors).$(MSBuildProjectName)</ModName>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <UserSecretsId>d1ead890-2ebb-430f-8aa7-c11d74d992c0</UserSecretsId>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugType>none</DebugType>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DiscordRichPresence" Version="1.0.175">
