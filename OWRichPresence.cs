@@ -3,6 +3,7 @@ using OWML.ModHelper;
 using DiscordRPC;
 using DiscordRPC.Unity;
 using UnityEngine;
+using OWRichPresence.API;
 
 namespace OWRichPresence
 {
@@ -87,11 +88,10 @@ namespace OWRichPresence
 
 		private void OnSceneLoad(OWScene loadScene)
 		{
-			_presenceStack.Clear();
 			switch (loadScene)
 			{
 				case OWScene.TitleScreen:
-					_presenceStack.Push(MakePresence("In the title screen.", ImageKey.outerwilds));
+					SetRootPresence("In the title screen.", ImageKey.outerwilds);
 					break;
 				case OWScene.SolarSystem:
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
@@ -135,27 +135,33 @@ namespace OWRichPresence
 					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", "Checking on the Backer Satellite.", ImageKey.outerwilds);
 					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);
-					_presenceStack.Push(MakePresence("Exploring the solar system.", ImageKey.sun));
+					SetRootPresence("Exploring the solar system.", ImageKey.sun);
 					break;
 				case OWScene.EyeOfTheUniverse:
-					_presenceStack.Push(MakePresence("Somewhere...", ImageKey.eyeoftheuniverse));
+					SetRootPresence("Somewhere...", ImageKey.eyeoftheuniverse);
 					break;
 				case OWScene.Credits_Fast:
-					_presenceStack.Push(MakePresence("Watching the credits.", ImageKey.outerwilds));
+					SetRootPresence("Watching the credits.", ImageKey.outerwilds);
 					break;
 				case OWScene.Credits_Final:
-					_presenceStack.Push(MakePresence("Beat the game.", ImageKey.outerwilds));
+					SetRootPresence("Beat the game.", ImageKey.outerwilds);
 					break;
 				case OWScene.PostCreditsScene:
-					_presenceStack.Push(MakePresence("14.3 billion years later...", ImageKey.outerwilds));
+					SetRootPresence("14.3 billion years later...", ImageKey.outerwilds);
 					break;
 				case OWScene.None:
 				case OWScene.Undefined:
 				default:
-					_presenceStack.Push(MakePresence("Unknown", ImageKey.outerwilds));
+					SetRootPresence("Unknown", ImageKey.outerwilds);
 					break;
 			}
 			client.SetPresence(_presenceStack.Peek());
+		}
+
+		public void SetRootPresence(string message, ImageKey imageKey)
+		{
+			_presenceStack.Clear();
+			_presenceStack.Push(MakePresence(message, imageKey));
 		}
 
 		private void Update() => client.Invoke();
