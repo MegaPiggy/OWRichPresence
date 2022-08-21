@@ -49,7 +49,7 @@ namespace OWRichPresence
 			switch (loadScene)
 			{
 				case OWScene.TitleScreen:
-                    SetRootPresence("In the title screen.", ImageKey.outerwilds);
+					SetRootPresence("In the title screen.", ImageKey.outerwilds);
 					break;
 				case OWScene.SolarSystem:
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
@@ -92,34 +92,34 @@ namespace OWRichPresence
 					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", "Checking on the Backer Satellite.", ImageKey.outerwilds);
 					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);
-                    SetRootPresence("Exploring the solar system.", ImageKey.sun);
+					SetRootPresence("Exploring the solar system.", ImageKey.sun);
 					break;
 				case OWScene.EyeOfTheUniverse:
-                    SetRootPresence("Somewhere...", ImageKey.eyeoftheuniverse);
+					SetRootPresence("Somewhere...", ImageKey.eyeoftheuniverse);
 					break;
 				case OWScene.Credits_Fast:
-                    SetRootPresence("Watching the credits.", ImageKey.outerwilds);
+					SetRootPresence("Watching the credits.", ImageKey.outerwilds);
 					break;
 				case OWScene.Credits_Final:
-                    SetRootPresence("Beat the game.", ImageKey.outerwilds);
+					SetRootPresence("Beat the game.", ImageKey.outerwilds);
 					break;
 				case OWScene.PostCreditsScene:
-                    SetRootPresence("14.3 billion years later...", ImageKey.outerwilds);
+					SetRootPresence("14.3 billion years later...", ImageKey.outerwilds);
 					break;
 				case OWScene.None:
 				case OWScene.Undefined:
 				default:
 					SetRootPresence("Unknown", ImageKey.outerwilds);
-                    break;
+					break;
 			}
 			client.SetPresence(_presenceStack.Peek());
 		}
 
 		public void SetRootPresence(string message, ImageKey imageKey)
 		{
-            _presenceStack.Clear();
-            _presenceStack.Push(MakePresence(message, imageKey));
-        }
+			_presenceStack.Clear();
+			_presenceStack.Push(MakePresence(message, imageKey));
+		}
 
 		private void Update() => client.Invoke();
 
@@ -163,7 +163,7 @@ namespace OWRichPresence
 
 		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
 		public static void SetPresence(RichPresence richPresence) => Instance.client.SetPresence(richPresence);
-    }
+	}
 
 	public enum ImageKey
 	{
