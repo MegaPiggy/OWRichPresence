@@ -23,8 +23,8 @@
   <ItemGroup>
     <PackageReference Include="DiscordRichPresence" Version="1.0.175">
     </PackageReference>
-    <PackageReference Include="OWML" Version="2.3.2.1" />
-    <PackageReference Include="OuterWildsGameLibs" Version="1.1.12.168" />
+    <PackageReference Include="OWML" Version="2.6.0" />
+    <PackageReference Include="OuterWildsGameLibs" Version="1.1.12.201" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default-config.json">
