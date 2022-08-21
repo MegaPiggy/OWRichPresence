@@ -57,7 +57,7 @@ namespace OWRichPresence
 					CreateTrigger(SearchUtilities.Find("BrittleHollow_Body/Sector_BH"), "Exploring Brittle Hollow.", ImageKey.brittlehollow);
 					CreateTrigger(SearchUtilities.Find("VolcanicMoon_Body/Sector_VM"), "Exploring Hollow's Lantern.", ImageKey.hollowslantern);
 					CreateTrigger(SearchUtilities.Find("Sun_Body/Sector_SUN"), "Burning up near the Sun.", ImageKey.sun);
-					//CreateTrigger(SearchUtilities.Find("SunStation_Body/Sector_SunStation"), "Exploring the Sun Station.", ImageKey.sunstation);
+					CreateTrigger(SearchUtilities.Find("SunStation_Body/Sector_SunStation"), "Orbiting the Sun.", ImageKey.sunstation);
 					CreateTrigger(SearchUtilities.Find("TowerTwin_Body/Sector_TowerTwin"), "Exploring Ash Twin.", ImageKey.ashtwin);
 					CreateTrigger(SearchUtilities.Find("CaveTwin_Body/Sector_CaveTwin"), "Exploring Ember Twin.", ImageKey.embertwin);
 					CreateTrigger(SearchUtilities.Find("QuantumMoon_Body/Sector_QuantumMoon"), "Exploring somewhere strange...", ImageKey.quantummoon);
@@ -79,15 +79,15 @@ namespace OWRichPresence
 					CreateTrigger(SearchUtilities.Find("FocalBody/Sector_HGT"), "Exploring The Hourglass Twins.", ImageKey.hourglasstwins);
 					CreateTrigger(SearchUtilities.Find("Comet_Body/Sector_CO"), "Exploring Interloper.", ImageKey.interloper);
 					CreateTrigger(SearchUtilities.Find("HearthianMapSatellite_Body/Sector_HearthianMapSatellite"), "Checking on the Map Satellite.", ImageKey.outerwilds);
-					//CreateTrigger(SearchUtilities.Find("OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon"), "Exploring the Orbital Probe Cannon.", ImageKey.orbitalprobecannon);
+					CreateTrigger(SearchUtilities.Find("OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon"), "Orbiting Giant's Deep.", ImageKey.orbitalprobecannon);
 					CreateTrigger(SearchUtilities.Find("GabbroShip_Body/Sector_GabbroShip"), "Checking on Gabbro's ship.", ImageKey.ship);
 					CreateTrigger(SearchUtilities.Find("StatueIsland_Body/Sector_StatueIsland"), "Exploring Statue Island.", ImageKey.giantsdeep);
 					CreateTrigger(SearchUtilities.Find("GabbroIsland_Body/Sector_GabbroIsland"), "Exploring Gabbro's Island.", ImageKey.giantsdeep);
 					CreateTrigger(SearchUtilities.Find("ConstructionYardIsland_Body/Sector_ConstructionYard"), "Exploring Construction Yard.", ImageKey.giantsdeep);
 					CreateTrigger(SearchUtilities.Find("BrambleIsland_Body/Sector_BrambleIsland"), "Exploring Bramble Island.", ImageKey.giantsdeep);
-					//CreateTrigger(SearchUtilities.Find("QuantumIsland_Body/Sector_QuantumIsland"), "Exploring Quantum Tower", ImageKey.giantsdeep);
-					//CreateTrigger(SearchUtilities.Find("CannonBarrel_Body/Sector_CannonDebrisMid"), "Exploring Orbital Probe Cannon Barrel", ImageKey.orbitalprobecannon);
-					//CreateTrigger(SearchUtilities.Find("CannonMuzzle_Body/Sector_CannonDebrisTip"), "Exploring Orbital Probe Cannon Muzzle", ImageKey.orbitalprobecannon);
+					CreateTrigger(SearchUtilities.Find("QuantumIsland_Body/Sector_QuantumIsland"), "Exploring somewhere strange...", ImageKey.giantsdeep);
+					CreateTrigger(SearchUtilities.Find("CannonBarrel_Body/Sector_CannonDebrisMid"), "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
+					CreateTrigger(SearchUtilities.Find("CannonMuzzle_Body/Sector_CannonDebrisTip"), "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
 					CreateTrigger(SearchUtilities.Find("Satellite_Body"), "Checking on \"Sky Shutter\" Satellite.", ImageKey.skyshutter);
 					CreateTrigger(SearchUtilities.Find("BackerSatellite_Body/Sector_BackerSatellite"), "Checking on the Backer Satellite.", ImageKey.outerwilds);
 					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
