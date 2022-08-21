@@ -10,7 +10,7 @@ namespace OWRichPresence
 	{
 		public DiscordRpcClient client;
 		public static OWRichPresence Instance { get; private set; }
-		public static bool TriggersActive;
+		public static bool TriggersActive = true;
 
 		public ListStack<RichPresence> _presenceStack = new();
 		public RichPresence _shipPresence;
