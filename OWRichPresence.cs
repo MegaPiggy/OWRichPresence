@@ -93,8 +93,7 @@ namespace OWRichPresence
 					_presenceStack.Push(MakePresence("Exploring the solar system.", ImageKey.sun));
 					break;
 				case OWScene.EyeOfTheUniverse:
-					new GameObject("EyeStatePresenceController", typeof(EyeStatePresenceController));
-					_presenceStack.Push(MakePresence("Exploring", ImageKey.eyeoftheuniverse));
+					_presenceStack.Push(MakePresence("Somewhere...", ImageKey.eyeoftheuniverse));
 					break;
 				case OWScene.Credits_Fast:
 					_presenceStack.Push(MakePresence("Watching the credits.", ImageKey.outerwilds));
