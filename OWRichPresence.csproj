@@ -35,17 +35,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Update="DiscordRPC.pdb">
+    <None Update="Lib\DiscordRPC.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="NativeNamedPipe.dll">
+    <None Update="Lib\NativeNamedPipe.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="NativeNamedPipe.so">
+    <None Update="Lib\NativeNamedPipe.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="echo ‎&#xD;&#xA;echo         Transferring files to $(OuterWildsModsDirectory)\$(ModName)&#xD;&#xA;@rmdir /Q /S &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@md &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)default-config.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)manifest.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)DiscordRPC.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)DiscordRPC.pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)NativeNamedPipe.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)NativeNamedPipe.so&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetPath)&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;echo ‎" />
+    <Exec Command="echo ‎&#xD;&#xA;echo         Transferring files to $(OuterWildsModsDirectory)\$(ModName)&#xD;&#xA;@rmdir /Q /S &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@md &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)default-config.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)manifest.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\DiscordRPC.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\DiscordRPC.pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\NativeNamedPipe.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\NativeNamedPipe.so&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetPath)&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;echo ‎" />
   </Target>
 </Project>
