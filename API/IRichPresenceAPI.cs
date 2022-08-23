@@ -11,5 +11,6 @@ public interface IRichPresenceAPI
 	public void SetTriggerActivation(bool active);
 	public GameObject CreateTrigger(GameObject parent, string message, string imageKey);
 	public GameObject CreateTrigger(GameObject parent, Sector sector, string message, string imageKey);
+	public void CreateTriggerVolume(OWTriggerVolume triggerVolume, string message, string imageKey);
 	public void SetCurrentRootPresence(string message, string imageKey);
 }

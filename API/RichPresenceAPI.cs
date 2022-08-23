@@ -32,6 +32,13 @@ public class RichPresenceAPI : IRichPresenceAPI
 		return trigger.gameObject;
 	}
 
+	public void CreateTriggerVolume(OWTriggerVolume triggerVolume, string message, string imageKey)
+	{
+		if (!Enum.TryParse(imageKey, true, out ImageKey imageKeyEnum)) imageKeyEnum = ImageKey.sun;
+
+		OWRichPresence.CreateTriggerVolume(triggerVolume, message, imageKeyEnum);
+	}
+
 	public void SetCurrentRootPresence(string message, string imageKey)
 		=> OWRichPresence.Instance.SetRootPresence(message, (ImageKey)Enum.Parse(typeof(ImageKey), imageKey, true));
 }

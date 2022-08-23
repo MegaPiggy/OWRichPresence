@@ -26,6 +26,11 @@ namespace OWRichPresence
 		private INewHorizons _newHorizons;
 		private bool _newHorizonsExamples;
 
+
+		public const string richPresenceTrigger = "RichPresenceTrigger";
+
+		public const string richPresenceTriggerVolume = "RichPresenceTriggerVolume";
+
 		public override object GetApi() => new RichPresenceAPI();
 
 		private void Awake()
@@ -146,12 +151,59 @@ namespace OWRichPresence
 
 		public static void WriteLine(string message, MessageType type) => Instance.ConsoleWriteLine(message, type);
 
+		public static void Push(RichPresence presence)
+		{
+			if (presence == null) return;
+
+			Instance._presenceStack.Push(presence);
+
+			if (PlayerState.IsInsideShip() && presence != Instance._shipPresence)
+			{
+				Instance._presenceStack.Remove(Instance._shipPresence);
+				Instance._presenceStack.Push(Instance._shipPresence);
+			}
+
+			if (TriggersActive)
+			{
+				SetPresence(Instance._presenceStack.Peek());
+			}
+		}
+
+		public static void Remove(RichPresence presence)
+		{
+			if (presence == null) return;
+
+			Instance._presenceStack.Remove(presence);
+
+			if (PlayerState.IsInsideShip() && presence != Instance._shipPresence)
+			{
+				Instance._presenceStack.Remove(Instance._shipPresence);
+				Instance._presenceStack.Push(Instance._shipPresence);
+			}
+
+			if (TriggersActive)
+			{
+				SetPresence(Instance._presenceStack.Peek());
+			}
+		}
+
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath)?.GetComponent<OWTriggerVolume>(), details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath)?.GetComponent<OWTriggerVolume>(), richPresence);
+
+		public static RichPresenceTriggerVolume CreateTriggerVolume(OWTriggerVolume owTriggerVolume, string details, ImageKey imageKey) => CreateTriggerVolume(owTriggerVolume, MakePresence(details, imageKey));
+		public static RichPresenceTriggerVolume CreateTriggerVolume(OWTriggerVolume owTriggerVolume, RichPresence richPresence)
+		{
+			if (owTriggerVolume == null) return null;
+			var rptv = owTriggerVolume.gameObject.GetAddComponent<RichPresenceTriggerVolume>();
+			rptv.triggerVolume = owTriggerVolume;
+			rptv.presence = richPresence;
+			return rptv;
+		}
+
 		public static RichPresenceTrigger CreateTrigger(string parentPath, string details, ImageKey imageKey) => CreateTrigger(SearchUtilities.Find(parentPath), details, imageKey);
 		public static RichPresenceTrigger CreateTrigger(string parentPath, RichPresence richPresence) => CreateTrigger(SearchUtilities.Find(parentPath), richPresence);
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, string details, ImageKey imageKey) => CreateTrigger(parent, MakePresence(details, imageKey));
-
-		public const string richPresenceTrigger = "RichPresenceTrigger";
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence)
 		{
