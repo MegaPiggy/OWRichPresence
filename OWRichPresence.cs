@@ -48,6 +48,7 @@ namespace OWRichPresence
 
 			client.Initialize();
 
+			_newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
 			_newHorizonsExamples = ModHelper.Interaction.ModExists("xen.NewHorizonsExamples");
 
 			OnSceneLoad(OWScene.TitleScreen);
@@ -67,6 +68,7 @@ namespace OWRichPresence
 					SetRootPresence("In the title screen.", ImageKey.outerwilds);
 					break;
 				case OWScene.SolarSystem:
+					var giantdeepimage = _newHorizonsExamples ? ImageKey.giantsdeepexamples : ImageKey.giantsdeep;
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
 					CreateTrigger("Moon_Body/Sector_THM", "Exploring the Attlerock.", ImageKey.attlerock);
 					CreateTrigger("BrittleHollow_Body/Sector_BH", "Exploring Brittle Hollow.", ImageKey.brittlehollow);
@@ -78,8 +80,7 @@ namespace OWRichPresence
 					CreateTrigger("QuantumMoon_Body/Sector_QuantumMoon", "Exploring somewhere strange...", ImageKey.quantummoon);
 					CreateTrigger("DreamWorld_Body/Sector_DreamWorld", "Exploring somewhere strange...", ImageKey.dreamworld);
 					CreateTrigger("RingWorld_Body/Sector_RingWorld", "Exploring somewhere strange...", ImageKey.stranger);
-					_giantsDeepPresence = MakePresence("Exploring Giant's Deep.", ImageKey.giantsdeep);
-					CreateTrigger("GiantsDeep_Body/Sector_GD", _giantsDeepPresence);
+					CreateTrigger("GiantsDeep_Body/Sector_GD", "Exploring Giant's Deep.", giantdeepimage);
 					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", ImageKey.darkbramble);
 					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
 					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
@@ -97,11 +98,11 @@ namespace OWRichPresence
 					CreateTrigger("HearthianMapSatellite_Body/Sector_HearthianMapSatellite", "Checking on the Map Satellite.", ImageKey.outerwilds);
 					CreateTrigger("OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon", "Orbiting Giant's Deep.", ImageKey.orbitalprobecannon);
 					CreateTrigger("GabbroShip_Body/Sector_GabbroShip", "Checking on Gabbro's ship.", ImageKey.ship);
-					CreateTrigger("StatueIsland_Body/Sector_StatueIsland", "Exploring Statue Island.", ImageKey.giantsdeep);
-					CreateTrigger("GabbroIsland_Body/Sector_GabbroIsland", "Exploring Gabbro's Island.", ImageKey.giantsdeep);
-					CreateTrigger("ConstructionYardIsland_Body/Sector_ConstructionYard", "Exploring Construction Yard.", ImageKey.giantsdeep);
-					CreateTrigger("BrambleIsland_Body/Sector_BrambleIsland", "Exploring Bramble Island.", ImageKey.giantsdeep);
-					CreateTrigger("QuantumIsland_Body/Sector_QuantumIsland", "Exploring somewhere strange...", ImageKey.giantsdeep);
+					CreateTrigger("StatueIsland_Body/Sector_StatueIsland", "Exploring Statue Island.", giantdeepimage);
+					CreateTrigger("GabbroIsland_Body/Sector_GabbroIsland", "Exploring Gabbro's Island.", giantdeepimage);
+					CreateTrigger("ConstructionYardIsland_Body/Sector_ConstructionYard", "Exploring Construction Yard.", giantdeepimage);
+					CreateTrigger("BrambleIsland_Body/Sector_BrambleIsland", "Exploring Bramble Island.", giantdeepimage);
+					CreateTrigger("QuantumIsland_Body/Sector_QuantumIsland", "Exploring somewhere strange...", giantdeepimage);
 					CreateTrigger("CannonBarrel_Body/Sector_CannonDebrisMid", "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
 					CreateTrigger("CannonMuzzle_Body/Sector_CannonDebrisTip", "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
 					CreateTrigger("Satellite_Body", "Checking on \"Sky Shutter\" Satellite.", ImageKey.skyshutter);
