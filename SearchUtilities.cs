@@ -21,6 +21,12 @@ namespace OWRichPresence
             return null;
         }
 
+        public static string GetPath(this Transform current)
+        {
+            if (current.parent == null) return current.name;
+            return current.parent.GetPath() + "/" + current.name;
+        }
+
         public static GameObject FindChild(this GameObject g, string childPath) =>
             g.transform.Find(childPath)?.gameObject;
 
@@ -28,7 +34,7 @@ namespace OWRichPresence
         /// finds active or inactive object by path,
         /// or recursively finds an active or inactive object by name
         /// </summary>
-        public static GameObject Find(string path, bool warn = true)
+        public static GameObject Find(string path, bool useResources = true, bool warn = true)
         {
             GameObject go = GameObject.Find(path);
 
@@ -40,7 +46,7 @@ namespace OWRichPresence
                 var root = SceneManager.GetActiveScene().GetRootGameObjects().FirstOrDefault(x => x.name == rootName);
                 if (root == null)
                 {
-                    if (warn) OWRichPresence.WriteLine($"Couldn't find root object in path {path}", OWML.Common.MessageType.Warning);
+                    if (warn) OWRichPresence.WriteLine($"Couldn't find root object in path {path}", OWML.Common.MessageType.Warning, true);
                     return null;
                 }
 
@@ -49,14 +55,18 @@ namespace OWRichPresence
                 if (go == null)
                 {
                     var name = names.Last();
-                    if (warn) OWRichPresence.WriteLine($"Couldn't find object in path {path}, will look for potential matches for name {name}", OWML.Common.MessageType.Warning);
-                    // find resource to include inactive objects
-                    // also includes prefabs but hopefully thats okay
-                    go = FindResourceOfTypeAndName<GameObject>(name);
-                    if (go == null)
+                    if (warn) OWRichPresence.WriteLine($"Couldn't find object in path {path}, will look for potential matches for name {name}", OWML.Common.MessageType.Warning, true);
+
+                    if (useResources)
                     {
-                        if (warn) OWRichPresence.WriteLine($"Couldn't find object with name {name}", OWML.Common.MessageType.Warning);
-                        return null;
+                        // find resource to include inactive objects
+                        // also includes prefabs but hopefully thats okay
+                        go = FindResourceOfTypeAndName<GameObject>(name);
+                        if (go == null)
+                        {
+                            if (warn) OWRichPresence.WriteLine($"Couldn't find object with name {name}", OWML.Common.MessageType.Warning, true);
+                            return null;
+                        }
                     }
                 }
             }

@@ -70,7 +70,51 @@ namespace OWRichPresence
 				case OWScene.SolarSystem:
 					var giantdeepimage = _newHorizonsExamples ? ImageKey.giantsdeepexamples : ImageKey.giantsdeep;
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ZeroGCave", "Exploring the Zero-G Cave.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/WatchVolume", "Visiting Tuff.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff", 2, "Visiting Tuff.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village", "Exploring the village.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery", "Visiting the Cemetery.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory/WatchVolume", "Visiting Tephra.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage", "Exploring the lower village.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/WatchVolume", "Visiting Mica.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss/WatchVolume", "Visiting Gneiss.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel/WatchVolume", "Visiting Spinel.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel", 2, "Visiting Spinel.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile/WatchVolume", "Visiting Rutile.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/WatchVolume", "Visiting Marl.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy/WatchVolume", "Visiting Porphy.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra/WatchVolume", "Visiting Tephra.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena/WatchVolume", "Visiting Galena.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)/WatchVolume", "Found Tephra.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)/WatchVolume", "Found Galena.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp", "Sleeping under the stars.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/WatchVolume", "Visiting Slate.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage", "Exploring the upper village.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/WatchVolume", "Visiting Gossan.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite/WatchVolume", "Visiting Tektite.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite", 2, "Visiting Tektite.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/WatchVolume", "Visiting Arkose.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter", 2, "Visiting Arkose.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine", 2, "Visiting Moraine.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory", "Visiting the Observatory.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum/WatchVolume", "Visiting Hal.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum", 2, "Visiting Hal.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside/WatchVolume", "Visiting Hal.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside", 2, "Visiting Hal.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels/WatchVolume", "Visiting Hornfels.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels", 2, "Visiting Hornfels.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)/WatchVolume", "Visiting Hornfels.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)", 2, "Visiting Hornfels.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_WaterWays", "Inside Timber Hearth.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiCrater", "Exploring a crater.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", "Exploring a crater.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", "Visiting Tektite.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, "Visiting Tektite.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", "Inside Timber Hearth.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines/Sector_NomaiMinesInterior", "Inside Timber Hearth.", ImageKey.timberhearth);
 					CreateTrigger("Moon_Body/Sector_THM", "Exploring the Attlerock.", ImageKey.attlerock);
+					CreateTriggerVolume("Moon_Body/Sector_THM/Volumes_THM/PineGroveVolume", "Visiting Esker.", ImageKey.attlerock);
 					CreateTrigger("BrittleHollow_Body/Sector_BH", "Exploring Brittle Hollow.", ImageKey.brittlehollow);
 					CreateTrigger("VolcanicMoon_Body/Sector_VM", "Exploring Hollow's Lantern.", ImageKey.hollowslantern);
 					CreateTrigger("Sun_Body/Sector_SUN", "Burning up near the Sun.", ImageKey.sun);
@@ -142,15 +186,15 @@ namespace OWRichPresence
 
 		private void OnApplicationQuit() => client.Deinitialize();
 
-		public void ConsoleWriteLine(string message, MessageType type)
+		public void ConsoleWriteLine(string message, MessageType type, bool @override = false)
 		{
-			if (debug)
+			if (debug || @override)
 			{
 				ModHelper.Console.WriteLine(message, type);
 			}
 		}
 
-		public static void WriteLine(string message, MessageType type) => Instance.ConsoleWriteLine(message, type);
+		public static void WriteLine(string message, MessageType type, bool @override = false) => Instance.ConsoleWriteLine(message, type, @override);
 
 		public static void Push(RichPresence presence)
 		{
@@ -188,8 +232,8 @@ namespace OWRichPresence
 			}
 		}
 
-		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath)?.GetComponent<OWTriggerVolume>(), details, imageKey);
-		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath)?.GetComponent<OWTriggerVolume>(), richPresence);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath, false)?.GetComponent<OWTriggerVolume>(), details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string triggerVolumePath, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(triggerVolumePath, false)?.GetComponent<OWTriggerVolume>(), richPresence);
 
 		public static RichPresenceTriggerVolume CreateTriggerVolume(OWTriggerVolume owTriggerVolume, string details, ImageKey imageKey) => CreateTriggerVolume(owTriggerVolume, MakePresence(details, imageKey));
 		public static RichPresenceTriggerVolume CreateTriggerVolume(OWTriggerVolume owTriggerVolume, RichPresence richPresence)
@@ -201,8 +245,39 @@ namespace OWRichPresence
 			return rptv;
 		}
 
-		public static RichPresenceTrigger CreateTrigger(string parentPath, string details, ImageKey imageKey) => CreateTrigger(SearchUtilities.Find(parentPath), details, imageKey);
-		public static RichPresenceTrigger CreateTrigger(string parentPath, RichPresence richPresence) => CreateTrigger(SearchUtilities.Find(parentPath), richPresence);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), radius, details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), radius, richPresence);
+
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, radius, MakePresence(details, imageKey));
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, RichPresence richPresence)
+		{
+			if (parent == null) return null;
+			var rpo = parent.FindChild(richPresenceTriggerVolume);
+			if (rpo != null)
+			{
+				var rptv = rpo.GetAddComponent<RichPresenceTriggerVolume>();
+				rptv.presence = richPresence;
+				return rptv;
+			}
+			else
+			{
+				rpo = new GameObject(richPresenceTriggerVolume);
+				rpo.transform.SetParent(parent.transform, false);
+				rpo.SetActive(false);
+				var ss = rpo.AddComponent<SphereShape>();
+				ss.radius = radius;
+				var owtv = rpo.AddComponent<OWTriggerVolume>();
+				owtv._shape = ss;
+				var rptv = rpo.AddComponent<RichPresenceTriggerVolume>();
+				rptv.triggerVolume = owtv;
+				rptv.presence = richPresence;
+				rpo.SetActive(true);
+				return rptv;
+			}
+		}
+
+		public static RichPresenceTrigger CreateTrigger(string parentPath, string details, ImageKey imageKey) => CreateTrigger(SearchUtilities.Find(parentPath, false), details, imageKey);
+		public static RichPresenceTrigger CreateTrigger(string parentPath, RichPresence richPresence) => CreateTrigger(SearchUtilities.Find(parentPath, false), richPresence);
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, string details, ImageKey imageKey) => CreateTrigger(parent, MakePresence(details, imageKey));
 
