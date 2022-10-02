@@ -116,6 +116,7 @@ namespace OWRichPresence
 					CreateTrigger("Moon_Body/Sector_THM", "Exploring the Attlerock.", ImageKey.attlerock);
 					CreateTriggerVolume("Moon_Body/Sector_THM/Volumes_THM/PineGroveVolume", "Visiting Esker.", ImageKey.attlerock);
 					CreateTrigger("BrittleHollow_Body/Sector_BH", "Exploring Brittle Hollow.", ImageKey.brittlehollow);
+					CreateTrigger("BrittleHollow_Body/Sector_BH/Sector_Crossroads", "Exploring the Crossroads.", ImageKey.brittlehollow);
 					CreateTriggerVolume("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck", new Vector3(-0.134f, 1.651f, 0.279f), 5, "Visiting Riebeck.", ImageKey.brittlehollow);
 					CreateTrigger("VolcanicMoon_Body/Sector_VM", "Exploring Hollow's Lantern.", ImageKey.hollowslantern);
 					CreateTrigger("Sun_Body/Sector_SUN", "Burning up near the Sun.", ImageKey.sun);
