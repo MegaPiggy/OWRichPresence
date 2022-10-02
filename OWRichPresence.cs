@@ -124,6 +124,7 @@ namespace OWRichPresence
 					CreateTrigger("QuantumMoon_Body/Sector_QuantumMoon", "Exploring somewhere strange...", ImageKey.quantummoon);
 					CreateTrigger("DreamWorld_Body/Sector_DreamWorld", "Exploring somewhere strange...", ImageKey.dreamworld);
 					CreateTrigger("RingWorld_Body/Sector_RingWorld", "Exploring somewhere strange...", ImageKey.stranger);
+					CreateTrigger("RingWorld_Body/Sector_RingInterior", "Exploring somewhere strange...", ImageKey.stranger);
 					CreateTrigger("GiantsDeep_Body/Sector_GD", "Exploring Giant's Deep.", giantdeepimage);
 					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", ImageKey.darkbramble);
 					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
