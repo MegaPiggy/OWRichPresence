@@ -70,7 +70,7 @@ namespace OWRichPresence
 		luhman16b,
 		mars,
 		mercury,
-		moon,
+		themoon,
 		neptune,
 		nix,
 		perdition,

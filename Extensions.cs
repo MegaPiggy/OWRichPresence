@@ -46,6 +46,8 @@ namespace OWRichPresence
 			ImageKey.terralure => "Terra Lure",
 			ImageKey.wetrock => "Wetrock",
 
+
+
 			_ => string.Empty,
 		};
 
