@@ -70,6 +70,7 @@ namespace OWRichPresence
 				case OWScene.SolarSystem:
 					var giantdeepimage = _newHorizonsExamples ? ImageKey.giantsdeepexamples : ImageKey.giantsdeep;
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village", new Vector3(52.4282f, 43.9491f, 17.3538f), 25, "On the launch pad.", ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ZeroGCave", "Exploring the Zero-G Cave.", ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/WatchVolume", "Visiting Tuff.", ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff", 2, "Visiting Tuff.", ImageKey.timberhearth);
