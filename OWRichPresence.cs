@@ -245,11 +245,15 @@ namespace OWRichPresence
 			return rptv;
 		}
 
-		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), radius, details, imageKey);
-		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), radius, richPresence);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parentPath, Vector3.zero, radius, details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, float radius, RichPresence richPresence) => CreateTriggerVolume(parentPath, Vector3.zero, radius, richPresence);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, Vector3 localPosition, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), localPosition, radius, details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(string parentPath, Vector3 localPosition, float radius, RichPresence richPresence) => CreateTriggerVolume(SearchUtilities.Find(parentPath, false), localPosition, radius, richPresence);
 
-		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, radius, MakePresence(details, imageKey));
-		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, RichPresence richPresence)
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, Vector3.zero, radius, details, imageKey);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, RichPresence richPresence) => CreateTriggerVolume(parent, Vector3.zero, radius, richPresence);
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, localPosition, radius, MakePresence(details, imageKey));
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, RichPresence richPresence)
 		{
 			if (parent == null) return null;
 			var rpo = parent.FindChild(richPresenceTriggerVolume);
@@ -263,6 +267,7 @@ namespace OWRichPresence
 			{
 				rpo = new GameObject(richPresenceTriggerVolume);
 				rpo.transform.SetParent(parent.transform, false);
+				rpo.transform.localPosition = localPosition;
 				rpo.SetActive(false);
 				var ss = rpo.AddComponent<SphereShape>();
 				ss.radius = radius;
