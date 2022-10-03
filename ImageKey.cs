@@ -51,6 +51,16 @@ namespace OWRichPresence
 		terralure,
 		wetrock,
 
+		//TRAPPIST-1
+		trappist1 = 190,
+		boilingfire,
+		cloudyskies,
+		deepwaters,
+		everlastingsunset,
+		frigidseas,
+		glacialsteam,
+		hollowice,
+
 		//RSS
 		barnardsstar = 200,
 		barnardsstarb,

@@ -46,6 +46,15 @@ namespace OWRichPresence
 			ImageKey.terralure => "Terra Lure",
 			ImageKey.wetrock => "Wetrock",
 
+			//TRAPPIST-1
+			ImageKey.trappist1 => "TRAPPIST-1",
+			ImageKey.boilingfire => "Boiling Fire",
+			ImageKey.cloudyskies => "Cloudy Skies",
+			ImageKey.deepwaters => "Deep Waters",
+			ImageKey.everlastingsunset => "Everlasting Sunset",
+			ImageKey.frigidseas => "Frigid Seas",
+			ImageKey.glacialsteam => "Glacial Steam",
+			ImageKey.hollowice => "Hollow Ice",
 
 
 			_ => string.Empty,
