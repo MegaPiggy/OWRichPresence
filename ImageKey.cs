@@ -50,6 +50,7 @@ namespace OWRichPresence
 		snowball,
 		terralure,
 		wetrock,
+		hinderingskies,
 
 		//TRAPPIST-1
 		trappist1 = 190,
