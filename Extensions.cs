@@ -46,6 +46,8 @@ namespace OWRichPresence
 			ImageKey.terralure => "Terra Lure",
 			ImageKey.wetrock => "Wetrock",
 			ImageKey.hinderingskies => "Hindering Skies",
+			ImageKey.lava1 => "Lava 1",
+			ImageKey.lava2 => "Lava 2",
 
 			//TRAPPIST-1
 			ImageKey.trappist1 => "TRAPPIST-1",

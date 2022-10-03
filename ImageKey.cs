@@ -51,6 +51,8 @@ namespace OWRichPresence
 		terralure,
 		wetrock,
 		hinderingskies,
+		lava1,
+		lava2,
 
 		//TRAPPIST-1
 		trappist1 = 190,
