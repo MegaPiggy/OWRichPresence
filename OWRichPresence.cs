@@ -159,6 +159,7 @@ namespace OWRichPresence
 					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", "Checking on the Backer Satellite.", ImageKey.outerwilds);
 					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);
+					AddObservatoryHemisphere();
 					SetRootPresence("Exploring the solar system.", ImageKey.sun);
 					break;
 				case OWScene.EyeOfTheUniverse:
@@ -180,6 +181,26 @@ namespace OWRichPresence
 					break;
 			}
 			client.SetPresence(_presenceStack.Peek());
+		}
+
+		private static void AddObservatoryHemisphere()
+		{
+			var sectorTriggerParent = SearchUtilities.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/SectorTrigger_ObservatoryProxTrigger");
+			if (sectorTriggerParent == null) return;
+			var rpo = new GameObject("Observatory" + richPresenceTriggerVolume);
+			rpo.transform.SetParent(sectorTriggerParent.transform.parent, false);
+			rpo.transform.position = sectorTriggerParent.transform.position + new Vector3(0.3689f, 15.6428f, 1.2f);
+			rpo.transform.localEulerAngles = Vector3.zero;
+			rpo.transform.localScale = Vector3.one;
+			rpo.SetActive(false);
+			var hemisphere = rpo.AddComponent<HemisphereShape>();
+			hemisphere.radius = 12;
+			var owtv = rpo.AddComponent<OWTriggerVolume>();
+			owtv._shape = hemisphere;
+			var rptv = rpo.AddComponent<RichPresenceTriggerVolume>();
+			rptv.triggerVolume = owtv;
+			rptv.presence = MakePresence("Visiting the Observatory.", ImageKey.timberhearth);
+			rpo.SetActive(true);
 		}
 
 		public void SetRootPresence(string message, ImageKey imageKey)
