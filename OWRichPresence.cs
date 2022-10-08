@@ -211,7 +211,10 @@ namespace OWRichPresence
 
 		private void Update() => client.Invoke();
 
-		private void OnApplicationQuit() => client.Deinitialize();
+		private void OnApplicationQuit()
+		{
+			if (client.IsInitialized) client.Deinitialize();
+		}
 
 		public void ConsoleWriteLine(string message, MessageType type, bool @override = false)
 		{
