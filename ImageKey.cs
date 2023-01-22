@@ -131,5 +131,7 @@ namespace OWRichPresence
 		titawin = 6624,
 		upsilonandromedaeb,
 
+		darkbrambleoutsider = 7288,
+		powerstation
 	}
 }

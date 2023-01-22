@@ -129,6 +129,9 @@ namespace OWRichPresence
 			ImageKey.titawin => "Titawin",
 			ImageKey.upsilonandromedaeb => "Upsilon Andromedae B",
 
+			ImageKey.darkbrambleoutsider => "Dark Bramble",
+			ImageKey.powerstation => "Bramble Power Station",
+
 			_ => string.Empty,
 		};
 

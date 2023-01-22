@@ -25,6 +25,7 @@ namespace OWRichPresence
 
 		private INewHorizons _newHorizons;
 		private bool _newHorizonsExamples;
+		private bool _outsider;
 
 
 		public const string richPresenceTrigger = "RichPresenceTrigger";
@@ -50,6 +51,7 @@ namespace OWRichPresence
 
 			_newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
 			_newHorizonsExamples = ModHelper.Interaction.ModExists("xen.NewHorizonsExamples");
+			_outsider = ModHelper.Interaction.ModExists("SBtT.TheOutsider");
 
 			OnSceneLoad(OWScene.TitleScreen);
 
@@ -68,6 +70,7 @@ namespace OWRichPresence
 					SetRootPresence("In the title screen.", ImageKey.outerwilds);
 					break;
 				case OWScene.SolarSystem:
+					var darkbrambleimage = _outsider ? ImageKey.darkbrambleoutsider : ImageKey.darkbramble;
 					var giantdeepimage = _newHorizonsExamples ? ImageKey.giantsdeepexamples : ImageKey.giantsdeep;
 					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village", new Vector3(52.4282f, 43.9491f, 17.3538f), 25, "On the launch pad.", ImageKey.timberhearth);
@@ -130,16 +133,16 @@ namespace OWRichPresence
 					CreateTrigger("RingWorld_Body/Sector_RingWorld", "Exploring somewhere strange...", ImageKey.stranger);
 					CreateTrigger("RingWorld_Body/Sector_RingInterior", "Exploring somewhere strange...", ImageKey.stranger);
 					CreateTrigger("GiantsDeep_Body/Sector_GD", "Exploring Giant's Deep.", giantdeepimage);
-					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", ImageKey.darkbramble);
-					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_Elsinore_Body/Sector_ElsinoreDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_EscapePodDimension_Body/Sector_EscapePodDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_ExitOnlyDimension_Body/Sector_ExitOnlyDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_HubDimension_Body/Sector_HubDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_PioneerDimension_Body/Sector_PioneerDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_SmallNest_Body/Sector_SmallNestDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
-					CreateTrigger("DB_VesselDimension_Body/Sector_VesselDimension", "Somewhere in Dark Bramble...", ImageKey.darkbramble);
+					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", darkbrambleimage);
+					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_Elsinore_Body/Sector_ElsinoreDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_EscapePodDimension_Body/Sector_EscapePodDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_ExitOnlyDimension_Body/Sector_ExitOnlyDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_HubDimension_Body/Sector_HubDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_PioneerDimension_Body/Sector_PioneerDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_SmallNest_Body/Sector_SmallNestDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
+					CreateTrigger("DB_VesselDimension_Body/Sector_VesselDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
 					CreateTrigger("WhiteHole_Body/Sector_WhiteHole", "Exploring the White Hole.", ImageKey.whitehole);
 					CreateTrigger("WhiteholeStation_Body/Sector_WhiteholeStation", "Exploring White Hole Station.", ImageKey.whitehole);
 					CreateTrigger("FocalBody/Sector_HGT", "Exploring The Hourglass Twins.", ImageKey.hourglasstwins);
@@ -160,6 +163,7 @@ namespace OWRichPresence
 					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);
 					AddObservatoryHemisphere();
+					if (_outsider) ModHelper.Events.Unity.RunWhen(() => SearchUtilities.Find("PowerStation/SectorDB_PowerStation/SectorTrigger_PowerStation", false, false) != null, () => CreateTrigger("PowerStation/SectorDB_PowerStation", "Orbiting Dark Bramble.", ImageKey.powerstation));
 					SetRootPresence("Exploring the solar system.", ImageKey.sun);
 					break;
 				case OWScene.EyeOfTheUniverse:
