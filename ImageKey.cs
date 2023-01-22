@@ -107,6 +107,10 @@ namespace OWRichPresence
 		triton,
 		uranus,
 		venus,
-		vesta
+		vesta,
+
+		titawin = 6624,
+		upsilonandromedaeb,
+
 	}
 }

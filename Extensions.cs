@@ -107,6 +107,9 @@ namespace OWRichPresence
 			ImageKey.venus => "Venus",
 			ImageKey.vesta => "Vesta",
 
+			ImageKey.titawin => "Titawin",
+			ImageKey.upsilonandromedaeb => "Upsilon Andromedae B",
+
 			_ => string.Empty,
 		};
 
