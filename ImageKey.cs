@@ -33,6 +33,9 @@ namespace OWRichPresence
 
 		//New Horizons
 		newhorizons = 96,
+		defaultplanet,
+		defaultplanetatmosphere,
+		defaultstar,
 
 		//New Horizons Examples
 		darkgateway = 100,

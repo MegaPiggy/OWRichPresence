@@ -29,6 +29,12 @@ namespace OWRichPresence
 			ImageKey.timberhearth => "Timber Hearth",
 			ImageKey.whitehole => "White Hole",
 
+			//New Horizons
+			ImageKey.newhorizons => "New Horizons",
+			ImageKey.defaultplanet => "Custom Planet",
+			ImageKey.defaultplanetatmosphere => "Custom Atmospheric Planet",
+			ImageKey.defaultstar => "Custom Star",
+
 			//New Horizons Examples
 			ImageKey.darkgateway => "Dark Gateway",
 			ImageKey.dauntingconfidant => "Daunting Confidant",
