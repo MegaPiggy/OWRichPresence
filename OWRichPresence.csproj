@@ -19,9 +19,9 @@
     <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DiscordRichPresence" Version="1.0.175">
+    <PackageReference Include="DiscordRichPresence" Version="1.1.3.18">
     </PackageReference>
-    <PackageReference Include="OWML" Version="2.7.2" />
+    <PackageReference Include="OWML" Version="2.9.0" />
     <PackageReference Include="OuterWildsGameLibs" Version="1.1.13.393" />
   </ItemGroup>
   <ItemGroup>

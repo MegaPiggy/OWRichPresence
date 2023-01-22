@@ -3,7 +3,7 @@
   "author": "MegaPiggy",
   "name": "Discord Rich Presence",
   "uniqueName": "MegaPiggy.OWRichPresence",
-  "version": "1.3.0",
-  "owmlVersion": "2.7.2",
+  "version": "1.4.0",
+  "owmlVersion": "2.9.0",
   "priorityLoad": true
 }
