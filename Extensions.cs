@@ -3,8 +3,8 @@ using OWML.Common;
 
 namespace OWRichPresence
 {
-    public static class Extensions
-    {
+	public static class Extensions
+	{
 		public static string KeyToText(this ImageKey imageKey) => imageKey switch
 		{
 			// Vanilla
