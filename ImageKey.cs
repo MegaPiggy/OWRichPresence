@@ -31,6 +31,22 @@ namespace OWRichPresence
 		timberhearth,
 		whitehole,
 
+		//Carson
+		carson = 50,
+		alpinia,
+		dester,
+		draeo,
+		ekbur,
+		glaze,
+		graebur,
+		loon,
+		mirtha,
+		platinumhue,
+		pyer,
+		scarletstorm,
+		urath,
+		volcus,
+
 		//Astral Codex
 		lingeringchime = 95,
 

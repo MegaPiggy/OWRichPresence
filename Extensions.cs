@@ -29,6 +29,22 @@ namespace OWRichPresence
 			ImageKey.timberhearth => "Timber Hearth",
 			ImageKey.whitehole => "White Hole",
 
+			//Carson
+			ImageKey.carson => "Carson",
+			ImageKey.alpinia => "Alpinia",
+			ImageKey.dester => "Dester",
+			ImageKey.draeo => "Draeo",
+			ImageKey.ekbur => "Ekbur",
+			ImageKey.glaze => "Glaze",
+			ImageKey.graebur => "Graebur",
+			ImageKey.loon => "Loon",
+			ImageKey.mirtha => "Mirtha",
+			ImageKey.platinumhue => "Platinum Hue",
+			ImageKey.pyer => "Pyer",
+			ImageKey.scarletstorm => "Scarlet Storm",
+			ImageKey.urath => "Urath",
+			ImageKey.volcus => "Volcus",
+
 			//Astral Codex
 			ImageKey.lingeringchime => "Lingering Chime",
 
