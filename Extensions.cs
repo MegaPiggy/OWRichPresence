@@ -29,6 +29,9 @@ namespace OWRichPresence
 			ImageKey.timberhearth => "Timber Hearth",
 			ImageKey.whitehole => "White Hole",
 
+			//Astral Codex
+			ImageKey.lingeringchime => "Lingering Chime",
+
 			//New Horizons
 			ImageKey.newhorizons => "New Horizons",
 			ImageKey.defaultplanet => "Custom Planet",

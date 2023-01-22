@@ -31,6 +31,9 @@ namespace OWRichPresence
 		timberhearth,
 		whitehole,
 
+		//Astral Codex
+		lingeringchime = 95,
+
 		//New Horizons
 		newhorizons = 96,
 		defaultplanet,
