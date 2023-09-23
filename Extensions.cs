@@ -144,6 +144,18 @@ namespace OWRichPresence
             _ => string.Empty,
         };
 
+        public static string ConvertToRealName(string id) => id switch
+        {
+            "DB_D_ENTRY" => "Entry Dimension",
+            "DB_D_FEEDGROUND" => "Feed Ground Dimension",
+            "DB_D_GOAL" => "Goal Dimension",
+            "DB_D_HOPPERTOWN" => "Hopper Town Dimension",
+            "DB_D_MININGSITE" => "Mining Site Dimension",
+            "DB_D_REDSEED" => "Red Seed Dimension",
+            "DB_D_WHITEHOLE" => "White Hole Dimension",
+            _ => id,
+        };
+
         public static MessageType DiscordToOWML(this LogLevel level) => level switch
         {
             LogLevel.Trace => MessageType.Debug,
