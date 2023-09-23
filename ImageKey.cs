@@ -133,5 +133,14 @@ namespace OWRichPresence
 
         darkbrambleoutsider = 7288,
         powerstation,
+
+        neighborsun = 9976,
+        lonelyhermit,
+        alpinecore,
+        lakecore,
+        lavacore,
+        derelictship,
+
+        tesseract = 2226
     }
 }

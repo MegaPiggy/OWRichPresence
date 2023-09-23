@@ -132,7 +132,14 @@ namespace OWRichPresence
             ImageKey.darkbrambleoutsider => "Dark Bramble",
             ImageKey.powerstation => "Bramble Power Station",
 
+            ImageKey.neighborsun => "Neighbor Sun",
+            ImageKey.lonelyhermit => "Lonely Hermit",
+            ImageKey.alpinecore => "Alpine Core",
+            ImageKey.lakecore => "Lake Core",
+            ImageKey.lavacore => "Lava Core",
+            ImageKey.derelictship => "Derelict Ship",
 
+            ImageKey.tesseract => "Tesseract",
 
             _ => string.Empty,
         };
