@@ -126,12 +126,15 @@ namespace OWRichPresence
             ImageKey.venus => "Venus",
             ImageKey.vesta => "Vesta",
 
+            //Upsilon Andromedae
             ImageKey.titawin => "Titawin",
             ImageKey.upsilonandromedaeb => "Upsilon Andromedae B",
 
+            //Outsider
             ImageKey.darkbrambleoutsider => "Dark Bramble",
             ImageKey.powerstation => "Bramble Power Station",
 
+            //Hearth's Neighbor
             ImageKey.neighborsun => "Neighbor Sun",
             ImageKey.lonelyhermit => "Lonely Hermit",
             ImageKey.alpinecore => "Alpine Core",
@@ -139,6 +142,7 @@ namespace OWRichPresence
             ImageKey.lavacore => "Lava Core",
             ImageKey.derelictship => "Derelict Ship",
 
+            //Tesseract's Secret
             ImageKey.tesseract => "Tesseract",
 
             _ => string.Empty,

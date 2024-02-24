@@ -128,12 +128,15 @@ namespace OWRichPresence
         venus,
         vesta,
 
+        //Upsilon Andromedae
         titawin = 6624,
         upsilonandromedaeb,
 
+        //Outsider
         darkbrambleoutsider = 7288,
         powerstation,
 
+        //Hearth's Neighbor
         neighborsun = 9976,
         lonelyhermit,
         alpinecore,
@@ -141,6 +144,7 @@ namespace OWRichPresence
         lavacore,
         derelictship,
 
-        tesseract = 2226
+        //Tesseract's Secret
+        tesseract = 2226,
     }
 }
