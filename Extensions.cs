@@ -145,6 +145,14 @@ namespace OWRichPresence
             //Tesseract's Secret
             ImageKey.tesseract => "Tesseract",
 
+            //Evacuation
+            ImageKey.thecampground => "The Campground",
+            ImageKey.layeredlagoon => "Layered Lagoon",
+            ImageKey.smolderinggulch => "Smoldering Gulch",
+            ImageKey.twilightfrost => "Twilight Frost",
+            ImageKey.spark => "Spark",
+            ImageKey.datacorrupted => "DATA CORRUPTED",
+
             _ => string.Empty,
         };
 

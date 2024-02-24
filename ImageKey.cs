@@ -146,5 +146,13 @@ namespace OWRichPresence
 
         //Tesseract's Secret
         tesseract = 2226,
+
+        //Evacuation
+        thecampground = 3822,
+        layeredlagoon,
+        smolderinggulch,
+        twilightfrost,
+        spark,
+        datacorrupted,
     }
 }
