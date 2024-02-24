@@ -154,5 +154,16 @@ namespace OWRichPresence
         twilightfrost,
         spark,
         datacorrupted,
+
+        //Unnamed Mystery
+        aetherion = 8669,
+        zephyria,
+        thalassia,
+        ginth,
+        helioplasmia,
+        metallos,
+        electrum,
+        outerspacestation,
+        ghostmoon,
     }
 }

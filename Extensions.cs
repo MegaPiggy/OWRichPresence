@@ -153,6 +153,17 @@ namespace OWRichPresence
             ImageKey.spark => "Spark",
             ImageKey.datacorrupted => "DATA CORRUPTED",
 
+            //Unnamed Mystery
+            ImageKey.aetherion => "Aetherion",
+            ImageKey.zephyria => "Zephyria",
+            ImageKey.thalassia => "Thalassia",
+            ImageKey.ginth => "Ginth",
+            ImageKey.helioplasmia => "Helioraxia",
+            ImageKey.metallos => "Metallos",
+            ImageKey.electrum => "Electrum",
+            ImageKey.outerspacestation => "Outer Space Station",
+            ImageKey.ghostmoon => "Ghost Moon",
+
             _ => string.Empty,
         };
 
