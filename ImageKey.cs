@@ -47,7 +47,7 @@ namespace OWRichPresence
         urath,
         volcus,
 
-        //Astral Codex
+        //Astral Codec
         lingeringchime = 95,
 
         //New Horizons

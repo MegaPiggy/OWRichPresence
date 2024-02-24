@@ -45,7 +45,7 @@ namespace OWRichPresence
             ImageKey.urath => "Urath",
             ImageKey.volcus => "Volcus",
 
-            //Astral Codex
+            //Astral Codec
             ImageKey.lingeringchime => "Lingering Chime",
 
             //New Horizons
