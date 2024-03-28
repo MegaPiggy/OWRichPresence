@@ -19,6 +19,14 @@ There is custom icon support for the following other mods:
 - [Evacuation](https://outerwildsmods.com/mods/evacuation/)
 - [Unnamed Mystery](https://outerwildsmods.com/mods/unnamedmystery/)
 - [Carson System](https://outerwildsmods.com/mods/carsonsystem/)
+- [Mod Jam 3](https://outerwildsmods.com/mods/modjam3/)
+- [Axiom's Refuge](https://outerwildsmods.com/mods/axiomsrefuge/)
+- [Hearth's Neighbor 2: Magistarium](https://outerwildsmods.com/mods/hearthsneighbor2magistarium/)
+- [Granite's Invitation](https://outerwildsmods.com/mods/granitesinvitation/)
+- [Finis](https://outerwildsmods.com/mods/finis/)
+- [Callis's Thesis](https://outerwildsmods.com/mods/callissthesis/)
+- [Echo Hike](https://outerwildsmods.com/mods/echohike/)
+- [Jam Hub](https://outerwildsmods.com/mods/jamhub/)
 
 Ask me if you want support for your mod added.
 

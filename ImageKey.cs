@@ -165,5 +165,34 @@ namespace OWRichPresence
         electrum,
         outerspacestation,
         ghostmoon,
+
+        //Separate section just for Jam 3 mods
+        //Mod Jam 3
+        jam3sun = 3526,
+        starshipcommunity,
+
+        //Axiom's Refuge
+        axiom,
+        aicale,
+
+        //Callis's Thesis
+        theboiledegg,
+
+        //Echo Hike
+        echohike,
+
+        //Finis
+        finisplateau,
+
+        //Granite's Invitation
+        gravelrock,
+
+        //Hearth's Neighbor 2: Magistarium
+        magistarium,
+
+        //Mod Jam Hub
+        modjamhub
+
+        //And any more that add icons in future or never
     }
 }

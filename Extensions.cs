@@ -164,6 +164,32 @@ namespace OWRichPresence
             ImageKey.outerspacestation => "Outer Space Station",
             ImageKey.ghostmoon => "Ghost Moon",
 
+            //Mod Jam 3
+            ImageKey.jam3sun => "Jam 3 Sun",
+            ImageKey.starshipcommunity => "Starship Community",
+
+            //Axiom's Refuge
+            ImageKey.axiom => "Axiom",
+            ImageKey.aicale => "Aicale",
+
+            //Callis's Thesis
+            ImageKey.theboiledegg => "The Boiled Egg",
+
+            //Echo Hike
+            ImageKey.echohike => "Echo Hike",
+
+            //Finis
+            ImageKey.finisplateau => "Finis Plateau",
+
+            //Granite's Invitation
+            ImageKey.gravelrock => "Gravelrock",
+
+            //Hearth's Neighbor 2: Magistarium
+            ImageKey.magistarium => "Magistarium",
+
+            //Mod Jam Hub
+            ImageKey.modjamhub => "Mod Jam Hub",
+
             _ => string.Empty,
         };
 
