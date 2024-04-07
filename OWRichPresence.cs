@@ -374,5 +374,6 @@ namespace OWRichPresence
 
 		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
 		public static void SetPresence(RichPresence richPresence) => Instance.client.SetPresence(richPresence);
+		public static string GetPresence() => Instance._presenceStack.Peek().Details;
 	}
 }

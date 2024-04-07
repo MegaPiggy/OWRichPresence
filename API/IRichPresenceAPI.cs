@@ -8,6 +8,7 @@ public interface IRichPresenceAPI
 {
 	public void SetRichPresence(string message, int imageKey);
 	public void SetRichPresence(string message, string imageKey);
+	public string GetRichPresence();
 	public void SetTriggerActivation(bool active);
 	public GameObject CreateTrigger(GameObject parent, string message, string imageKey);
 	public GameObject CreateTrigger(GameObject parent, Sector sector, string message, string imageKey);
