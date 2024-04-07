@@ -188,7 +188,7 @@ namespace OWRichPresence
 					SetRootPresence("Unknown", ImageKey.outerwilds);
 					break;
 			}
-			client.SetPresence(_presenceStack.Peek());
+			SetPresence(_presenceStack.Peek());
 		}
 
 		private static void AddObservatoryHemisphere()
@@ -376,7 +376,7 @@ namespace OWRichPresence
 			};
 		}
 
-		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
+		public static void SetPresence(string details, ImageKey imageKey) => SetPresence(MakePresence(details, imageKey));
 		public static void SetPresence(RichPresence richPresence)
 		{
 			Instance.client.SetPresence(richPresence);
