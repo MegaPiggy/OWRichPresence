@@ -14,9 +14,6 @@ public class RichPresenceAPI : IRichPresenceAPI
 	public void SetRichPresence(string message, string imageKey)
 		=> OWRichPresence.SetPresence(message, EnumUtils.Parse<ImageKey>(imageKey, true, ImageKey.sun));
 
-	public (string message, string imageKey) GetRichPresence()
-		=> OWRichPresence.GetPresence();
-
 	public void SetTriggerActivation(bool active)
 		=> OWRichPresence.TriggersActive = active;
 
@@ -68,4 +65,7 @@ public class RichPresenceAPI : IRichPresenceAPI
 
 	public void SetCurrentRootPresence(string message, string imageKey)
 		=> OWRichPresence.Instance.SetRootPresence(message, EnumUtils.Parse<ImageKey>(imageKey, true, ImageKey.sun));
+
+	public void RegisterHandler(Action<string, string, string> handler)
+		=> OWRichPresence.RegisterHandler(handler);
 }

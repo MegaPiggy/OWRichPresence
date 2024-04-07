@@ -4,6 +4,8 @@ using DiscordRPC;
 using DiscordRPC.Unity;
 using UnityEngine;
 using OWRichPresence.API;
+using System;
+using System.Collections.Generic;
 
 namespace OWRichPresence
 {
@@ -16,6 +18,8 @@ namespace OWRichPresence
 		public ListStack<RichPresence> _presenceStack = new();
 		public RichPresence _shipPresence;
 		public RichPresence _giantsDeepPresence;
+
+		public readonly List<Action<string, string, string>> handlers = new();
 
 #if DEBUG
 		private static bool debug = true;
@@ -373,7 +377,18 @@ namespace OWRichPresence
 		}
 
 		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
-		public static void SetPresence(RichPresence richPresence) => Instance.client.SetPresence(richPresence);
-		public static string GetPresence() => Instance._presenceStack.Peek().Details;
+		public static void SetPresence(RichPresence richPresence)
+		{
+			Instance.client.SetPresence(richPresence);
+			foreach (var handler in Instance.handlers)
+			{
+				handler(richPresence.Details, richPresence.Assets.LargeImageKey, richPresence.Assets.LargeImageText);
+			}
+		}
+
+		public static void RegisterHandler(Action<string, string, string> handler)
+		{
+			Instance.handlers.Add(handler);
+		}
 	}
 }
