@@ -379,11 +379,11 @@ namespace OWRichPresence
 		public static void SetPresence(string details, ImageKey imageKey) => SetPresence(MakePresence(details, imageKey));
 		public static void SetPresence(RichPresence richPresence)
 		{
-			Instance.client.SetPresence(richPresence);
 			foreach (var handler in Instance.handlers)
 			{
 				handler(richPresence.Details, richPresence.Assets.LargeImageKey, richPresence.Assets.LargeImageText);
 			}
+			Instance.client.SetPresence(richPresence);
 		}
 
 		public static void RegisterHandler(Action<string, string, string> handler)
