@@ -191,7 +191,10 @@ namespace OWRichPresence
         magistarium,
 
         //Mod Jam Hub
-        modjamhub
+        modjamhub,
+
+        //Band Together
+        fracturedharmony
 
         //And any more that add icons in future or never
     }

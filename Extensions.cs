@@ -190,6 +190,9 @@ namespace OWRichPresence
             //Mod Jam Hub
             ImageKey.modjamhub => "Mod Jam Hub",
 
+            //Band Together
+            ImageKey.fracturedharmony => "Fractured Harmony",
+
             _ => string.Empty,
         };
 
