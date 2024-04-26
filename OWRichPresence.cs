@@ -4,6 +4,8 @@ using DiscordRPC;
 using DiscordRPC.Unity;
 using UnityEngine;
 using OWRichPresence.API;
+using System;
+using System.Collections.Generic;
 
 namespace OWRichPresence
 {
@@ -16,6 +18,8 @@ namespace OWRichPresence
 		public ListStack<RichPresence> _presenceStack = new();
 		public RichPresence _shipPresence;
 		public RichPresence _giantsDeepPresence;
+
+		public readonly List<Action<string, string, string>> handlers = new();
 
 #if DEBUG
 		private static bool debug = true;
@@ -184,7 +188,7 @@ namespace OWRichPresence
 					SetRootPresence("Unknown", ImageKey.outerwilds);
 					break;
 			}
-			client.SetPresence(_presenceStack.Peek());
+			SetPresence(_presenceStack.Peek());
 		}
 
 		private static void AddObservatoryHemisphere()
@@ -372,7 +376,19 @@ namespace OWRichPresence
 			};
 		}
 
-		public static void SetPresence(string details, ImageKey imageKey) => Instance.client.SetPresence(MakePresence(details, imageKey));
-		public static void SetPresence(RichPresence richPresence) => Instance.client.SetPresence(richPresence);
+		public static void SetPresence(string details, ImageKey imageKey) => SetPresence(MakePresence(details, imageKey));
+		public static void SetPresence(RichPresence richPresence)
+		{
+			foreach (var handler in Instance.handlers)
+			{
+				handler(richPresence.Details, richPresence.Assets.LargeImageKey, richPresence.Assets.LargeImageText);
+			}
+			Instance.client.SetPresence(richPresence);
+		}
+
+		public static void RegisterHandler(Action<string, string, string> handler)
+		{
+			Instance.handlers.Add(handler);
+		}
 	}
 }

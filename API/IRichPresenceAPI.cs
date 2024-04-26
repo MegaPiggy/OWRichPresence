@@ -20,4 +20,5 @@ public interface IRichPresenceAPI
 	public GameObject CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, string message, string imageKey);
 	public GameObject CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, string message, string imageKey, string fallback);
 	public void SetCurrentRootPresence(string message, string imageKey);
+	public void RegisterHandler(Action<string, string, string> handler);
 }

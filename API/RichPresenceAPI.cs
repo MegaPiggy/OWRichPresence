@@ -65,4 +65,7 @@ public class RichPresenceAPI : IRichPresenceAPI
 
 	public void SetCurrentRootPresence(string message, string imageKey)
 		=> OWRichPresence.Instance.SetRootPresence(message, EnumUtils.Parse<ImageKey>(imageKey, true, ImageKey.sun));
+
+	public void RegisterHandler(Action<string, string, string> handler)
+		=> OWRichPresence.RegisterHandler(handler);
 }
