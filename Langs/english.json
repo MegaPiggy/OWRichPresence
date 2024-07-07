@@ -27,6 +27,10 @@
             "hornfels": "Visiting Hornfels.",
             "inside": "Inside Timber Hearth.",
             "crater": "Exploring a crater."
+        },
+        "attlerock": {
+            "exploring": "Exploring the Attlerock.",
+            "esker": "Visiting Esker."
         }
     }
 }
