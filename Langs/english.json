@@ -1,0 +1,32 @@
+{
+    "title_screen": "In the title screen.",
+    "solar_system": {
+        "timble_hearth": {
+            "exploring": "Exploring Timber Hearth.",
+            "launch_pad": "On the launch pad.",
+            "zero-g": "Exploring the Zero-G Cave.",
+            "tuff": "Visiting Tuff.",
+            "village": "Exploring the village",
+            "cemetery": "Visiting the Cemetery.",
+            "lower_village": "Exploring the lower village.",
+            "mica": "Visiting Mica.",
+            "gneiss": "Visiting Gneiss.",
+            "spinel": "Visiting Spinel.",
+            "rutile": "Visiting Rutile.",
+            "marl": "Visiting Marl.",
+            "porphy": "Visiting Porphy.",
+            "tephra": "Visiting Tephra.",
+            "galena": "Visiting Galena.",
+            "slate": "Visiting Slate.",
+            "gossan": "Visiting Gossan.",
+            "tektite": "Visiting Tektite.",
+            "arkose": "Visiting Arkose.",
+            "moraine": "Visiting Moraine.",
+            "observatory": "Visiting the Observatory.",
+            "hal": "Visiting Hal.",
+            "hornfels": "Visiting Hornfels.",
+            "inside": "Inside Timber Hearth.",
+            "crater": "Exploring a crater."
+        }
+    }
+}

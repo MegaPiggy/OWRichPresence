@@ -19,7 +19,7 @@
     <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DiscordRichPresence" Version="1.2.1.24"/>
+    <PackageReference Include="DiscordRichPresence" Version="1.2.1.24" />
     <PackageReference Include="OWML" Version="2.9.8" />
     <PackageReference Include="OuterWildsGameLibs" Version="1.1.14.768" />
   </ItemGroup>
@@ -44,6 +44,9 @@
     <None Update="Lib\NativeNamedPipe.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Langs\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="echo ‎&#xD;&#xA;echo         Transferring files to $(OuterWildsModsDirectory)\$(ModName)&#xD;&#xA;@rmdir /Q /S &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@md &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)default-config.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)manifest.json&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\DiscordRPC.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\DiscordRPC.pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\DiscordRPC.xml&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\NativeNamedPipe.dll&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(ProjectDir)\Lib\NativeNamedPipe.so&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;@copy /y &quot;$(TargetPath)&quot; &quot;$(OuterWildsModsDirectory)\$(ModName)\&quot;&#xD;&#xA;echo ‎" />
