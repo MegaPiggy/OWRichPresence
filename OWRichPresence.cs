@@ -6,6 +6,7 @@ using UnityEngine;
 using OWRichPresence.API;
 using System;
 using System.Collections.Generic;
+using OWRichPresence.Langs;
 
 namespace OWRichPresence
 {
@@ -30,9 +31,11 @@ namespace OWRichPresence
 		private INewHorizons _newHorizons;
 		private bool _newHorizonsExamples;
 		private bool _outsider;
+		private GlobalLangText Translation = new();
 
 
-		public const string richPresenceTrigger = "RichPresenceTrigger";
+
+        public const string richPresenceTrigger = "RichPresenceTrigger";
 
 		public const string richPresenceTriggerVolume = "RichPresenceTriggerVolume";
 
@@ -41,12 +44,22 @@ namespace OWRichPresence
 		private void Awake()
 		{
 			Instance = this;
-		}
+        }
 
 		private void Start()
 		{
 			// Starting here, you'll have access to OWML's mod helper.
-			ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
+			string langSelected = ModHelper.Config.GetSettingsValue<string>("Language");
+            switch (langSelected)
+            {
+                case "English":
+                    Translation = English.Content;
+                    break;
+                case "Français":
+                    Translation = French.Content;
+                    break;
+            }
+            ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
 
 			var logger = new OWConsoleLogger(MessageType.Debug);
 			client = new DiscordRpcClient("1010346259757944882", -1, logger, false, new UnityNamedPipe(logger));
@@ -57,135 +70,157 @@ namespace OWRichPresence
 			_newHorizonsExamples = ModHelper.Interaction.ModExists("xen.NewHorizonsExamples");
 			_outsider = ModHelper.Interaction.ModExists("SBtT.TheOutsider");
 
-			OnSceneLoad(OWScene.TitleScreen);
+            OnSceneLoad(OWScene.TitleScreen);
 
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
+
 		}
 
-		private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
+        public override void Configure(IModConfig config)
+        {
+            string langSelected = config.GetSettingsValue<string>("Language");
+            switch (langSelected)
+            {
+                case "English":
+                    Translation = English.Content;
+                    break;
+                case "Français":
+                    Translation = French.Content;
+                    break;
+            }
+
+			if (LoadManager.s_currentScene != OWScene.None)
+			{
+				OnSceneLoad(LoadManager.s_currentScene);
+			}
+
+        }
+
+        private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, RichPresence richPresence) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, richPresence);
 
-		private void OnSceneLoad(OWScene loadScene)
+        private void OnSceneLoad(OWScene loadScene)
 		{
+
 			switch (loadScene)
 			{
 				case OWScene.TitleScreen:
-					SetRootPresence("In the title screen.", ImageKey.outerwilds);
+					SetRootPresence(Translation.TitleScreen, ImageKey.outerwilds);
 					break;
 				case OWScene.SolarSystem:
 					var darkbrambleimage = _outsider ? ImageKey.darkbrambleoutsider : ImageKey.darkbramble;
 					var giantdeepimage = _newHorizonsExamples ? ImageKey.giantsdeepexamples : ImageKey.giantsdeep;
-					CreateTrigger("TimberHearth_Body/Sector_TH", "Exploring Timber Hearth.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village", new Vector3(52.4282f, 43.9491f, 17.3538f), 25, "On the launch pad.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ZeroGCave", "Exploring the Zero-G Cave.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/WatchVolume", "Visiting Tuff.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff", 2, "Visiting Tuff.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village", "Exploring the village.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH", Translation.SolarSystem.TimberHearth.Exploring, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village", new Vector3(52.4282f, 43.9491f, 17.3538f), 25, Translation.SolarSystem.TimberHearth.LaunchPad, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ZeroGCave", Translation.SolarSystem.TimberHearth.ZeroG, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/WatchVolume", Translation.SolarSystem.TimberHearth.Tuff, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff", 2, Translation.SolarSystem.TimberHearth.Tuff, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village", Translation.SolarSystem.TimberHearth.Village, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery", "Visiting the Cemetery.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory/WatchVolume", "Visiting Tephra.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage", "Exploring the lower village.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/WatchVolume", "Visiting Mica.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss/WatchVolume", "Visiting Gneiss.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel/WatchVolume", "Visiting Spinel.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel", 2, "Visiting Spinel.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile/WatchVolume", "Visiting Rutile.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/WatchVolume", "Visiting Marl.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy/WatchVolume", "Visiting Porphy.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra/WatchVolume", "Visiting Tephra.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena/WatchVolume", "Visiting Galena.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)/WatchVolume", "Found Tephra.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)/WatchVolume", "Found Galena.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp", "Sleeping under the stars.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/WatchVolume", "Visiting Slate.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage", "Exploring the upper village.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/WatchVolume", "Visiting Gossan.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite/WatchVolume", "Visiting Tektite.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite", 2, "Visiting Tektite.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/WatchVolume", "Visiting Arkose.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter", 2, "Visiting Arkose.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine", 2, "Visiting Moraine.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory", "Visiting the Observatory.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum/WatchVolume", "Visiting Hal.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum", 2, "Visiting Hal.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside/WatchVolume", "Visiting Hal.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside", 2, "Visiting Hal.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels/WatchVolume", "Visiting Hornfels.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels", 2, "Visiting Hornfels.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)/WatchVolume", "Visiting Hornfels.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)", 2, "Visiting Hornfels.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_WaterWays", "Inside Timber Hearth.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiCrater", "Exploring a crater.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", "Exploring a crater.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", "Visiting Tektite.", ImageKey.timberhearth);
-					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, "Visiting Tektite.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", "Inside Timber Hearth.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines/Sector_NomaiMinesInterior", "Inside Timber Hearth.", ImageKey.timberhearth);
-					CreateTrigger("Moon_Body/Sector_THM", "Exploring the Attlerock.", ImageKey.attlerock);
-					CreateTriggerVolume("Moon_Body/Sector_THM/Volumes_THM/PineGroveVolume", "Visiting Esker.", ImageKey.attlerock);
-					CreateTrigger("BrittleHollow_Body/Sector_BH", "Exploring Brittle Hollow.", ImageKey.brittlehollow);
-					CreateTrigger("BrittleHollow_Body/Sector_BH/Sector_Crossroads", "Exploring the Crossroads.", ImageKey.brittlehollow);
-					CreateTriggerVolume("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck", new Vector3(-0.134f, 1.651f, 0.279f), 5, "Visiting Riebeck.", ImageKey.brittlehollow);
-					CreateTrigger("VolcanicMoon_Body/Sector_VM", "Exploring Hollow's Lantern.", ImageKey.hollowslantern);
-					CreateTrigger("Sun_Body/Sector_SUN", "Burning up near the Sun.", ImageKey.sun);
-					CreateTrigger("SunStation_Body/Sector_SunStation", "Orbiting the Sun.", ImageKey.sunstation);
-					CreateTrigger("TowerTwin_Body/Sector_TowerTwin", "Exploring Ash Twin.", ImageKey.ashtwin);
-					CreateTrigger("CaveTwin_Body/Sector_CaveTwin", "Exploring Ember Twin.", ImageKey.embertwin);
-					CreateTriggerVolume("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert", Vector3.zero, 5, "Visiting Chert.", ImageKey.embertwin);
-					CreateTrigger("QuantumMoon_Body/Sector_QuantumMoon", "Exploring somewhere strange...", ImageKey.quantummoon);
-					CreateTrigger("DreamWorld_Body/Sector_DreamWorld", "Exploring somewhere strange...", ImageKey.dreamworld);
-					CreateTrigger("RingWorld_Body/Sector_RingWorld", "Exploring somewhere strange...", ImageKey.stranger);
-					CreateTrigger("RingWorld_Body/Sector_RingInterior", "Exploring somewhere strange...", ImageKey.stranger);
-					CreateTrigger("GiantsDeep_Body/Sector_GD", "Exploring Giant's Deep.", giantdeepimage);
-					CreateTrigger("DarkBramble_Body/Sector_DB", "Exploring Dark Bramble.", darkbrambleimage);
-					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_Elsinore_Body/Sector_ElsinoreDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_EscapePodDimension_Body/Sector_EscapePodDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_ExitOnlyDimension_Body/Sector_ExitOnlyDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_HubDimension_Body/Sector_HubDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_PioneerDimension_Body/Sector_PioneerDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_SmallNest_Body/Sector_SmallNestDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("DB_VesselDimension_Body/Sector_VesselDimension", "Somewhere in Dark Bramble...", darkbrambleimage);
-					CreateTrigger("WhiteHole_Body/Sector_WhiteHole", "Exploring the White Hole.", ImageKey.whitehole);
-					CreateTrigger("WhiteholeStation_Body/Sector_WhiteholeStation", "Exploring White Hole Station.", ImageKey.whitehole);
-					CreateTrigger("FocalBody/Sector_HGT", "Exploring The Hourglass Twins.", ImageKey.hourglasstwins);
-					CreateTrigger("Comet_Body/Sector_CO", "Exploring Interloper.", ImageKey.interloper);
-					CreateTrigger("HearthianMapSatellite_Body/Sector_HearthianMapSatellite", "Checking on the Map Satellite.", ImageKey.outerwilds);
-					CreateTrigger("OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon", "Orbiting Giant's Deep.", ImageKey.orbitalprobecannon);
-					CreateTrigger("GabbroShip_Body/Sector_GabbroShip", "Checking on Gabbro's ship.", ImageKey.ship);
-					CreateTrigger("StatueIsland_Body/Sector_StatueIsland", "Exploring Statue Island.", giantdeepimage);
-					CreateTrigger("GabbroIsland_Body/Sector_GabbroIsland", "Exploring Gabbro's Island.", giantdeepimage);
-					CreateTriggerVolume("GabbroIsland_Body/Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro", new Vector3(-0.09f, 1.21f, 0), 5, "Visiting Gabbro.", giantdeepimage);
-					CreateTrigger("ConstructionYardIsland_Body/Sector_ConstructionYard", "Exploring Construction Yard.", giantdeepimage);
-					CreateTrigger("BrambleIsland_Body/Sector_BrambleIsland", "Exploring Bramble Island.", giantdeepimage);
-					CreateTrigger("QuantumIsland_Body/Sector_QuantumIsland", "Exploring somewhere strange...", giantdeepimage);
-					CreateTrigger("CannonBarrel_Body/Sector_CannonDebrisMid", "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
-					CreateTrigger("CannonMuzzle_Body/Sector_CannonDebrisTip", "Orbiting Giant's Deep", ImageKey.orbitalprobecannon);
-					CreateTrigger("Satellite_Body", "Checking on \"Sky Shutter\" Satellite.", ImageKey.skyshutter);
-					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", "Checking on the Backer Satellite.", ImageKey.outerwilds);
-					_shipPresence = MakePresence("Inside the ship.", ImageKey.ship);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory/WatchVolume", Translation.SolarSystem.TimberHearth.Tephra, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage", Translation.SolarSystem.TimberHearth.LowerVillage, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/WatchVolume", Translation.SolarSystem.TimberHearth.Mica, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss/WatchVolume", Translation.SolarSystem.TimberHearth.Gneiss, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel/WatchVolume", Translation.SolarSystem.TimberHearth.Spinel, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel", 2, Translation.SolarSystem.TimberHearth.Spinel, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile/WatchVolume", Translation.SolarSystem.TimberHearth.Rutile, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/WatchVolume", Translation.SolarSystem.TimberHearth.Marl, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy/WatchVolume", Translation.SolarSystem.TimberHearth.Porphy, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra/WatchVolume", Translation.SolarSystem.TimberHearth.Tephra, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena/WatchVolume", Translation.SolarSystem.TimberHearth.Galena, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)/WatchVolume", Translation.SolarSystem.TimberHearth.FoundTephra, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)/WatchVolume", Translation.SolarSystem.TimberHearth.FoundGalena, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp", Translation.SolarSystem.TimberHearth.Sleeping, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/WatchVolume", Translation.SolarSystem.TimberHearth.Slate, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage", Translation.SolarSystem.TimberHearth.UpperVillage, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/WatchVolume", Translation.SolarSystem.TimberHearth.Gossan, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite/WatchVolume", Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Tektite", 2, Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/WatchVolume", Translation.SolarSystem.TimberHearth.Arkose, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter", 2, Translation.SolarSystem.TimberHearth.Arkose, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine", 2, Translation.SolarSystem.TimberHearth.Moraine, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory", Translation.SolarSystem.TimberHearth.Observatory, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum/WatchVolume", Translation.SolarSystem.TimberHearth.Hal, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum", 2, Translation.SolarSystem.TimberHearth.Hal, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside/WatchVolume", Translation.SolarSystem.TimberHearth.Hal, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Characters_Village/Villager_HEA_Hal_Outside", 2, Translation.SolarSystem.TimberHearth.Hal, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels/WatchVolume", Translation.SolarSystem.TimberHearth.Hornfels, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels", 2, Translation.SolarSystem.TimberHearth.Hornfels, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)/WatchVolume", Translation.SolarSystem.TimberHearth.Hornfels, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)", 2, Translation.SolarSystem.TimberHearth.Hornfels, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_WaterWays", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiCrater", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
+					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines/Sector_NomaiMinesInterior", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
+					CreateTrigger("Moon_Body/Sector_THM", Translation.SolarSystem.Attlerock.Exploring, ImageKey.attlerock);
+					CreateTriggerVolume("Moon_Body/Sector_THM/Volumes_THM/PineGroveVolume", Translation.SolarSystem.Attlerock.Esker, ImageKey.attlerock);
+					CreateTrigger("BrittleHollow_Body/Sector_BH", Translation.SolarSystem.BrittleHollow.Exploring, ImageKey.brittlehollow);
+					CreateTrigger("BrittleHollow_Body/Sector_BH/Sector_Crossroads", Translation.SolarSystem.BrittleHollow.Crossroads, ImageKey.brittlehollow);
+					CreateTriggerVolume("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck", new Vector3(-0.134f, 1.651f, 0.279f), 5, Translation.SolarSystem.BrittleHollow.Riebeck, ImageKey.brittlehollow);
+					CreateTrigger("VolcanicMoon_Body/Sector_VM", Translation.SolarSystem.HollowsLantern.Exploring, ImageKey.hollowslantern);
+					CreateTrigger("Sun_Body/Sector_SUN", Translation.SolarSystem.Sun.Burning, ImageKey.sun);
+					CreateTrigger("SunStation_Body/Sector_SunStation", Translation.SolarSystem.Sun.Orbiting, ImageKey.sunstation);
+					CreateTrigger("TowerTwin_Body/Sector_TowerTwin", Translation.SolarSystem.AshTwin.Exploring, ImageKey.ashtwin);
+					CreateTrigger("CaveTwin_Body/Sector_CaveTwin", Translation.SolarSystem.EmberTwin.Exploring, ImageKey.embertwin);
+					CreateTriggerVolume("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert", Vector3.zero, 5, Translation.SolarSystem.EmberTwin.Chert, ImageKey.embertwin);
+					CreateTrigger("QuantumMoon_Body/Sector_QuantumMoon", Translation.SolarSystem.QuantumMoon.Exploring, ImageKey.quantummoon);
+					CreateTrigger("DreamWorld_Body/Sector_DreamWorld", Translation.SolarSystem.DreamWorld.Exploring, ImageKey.dreamworld);
+					CreateTrigger("RingWorld_Body/Sector_RingWorld", Translation.SolarSystem.Stranger.Exploring, ImageKey.stranger);
+					CreateTrigger("RingWorld_Body/Sector_RingInterior", Translation.SolarSystem.Stranger.Exploring, ImageKey.stranger);
+					CreateTrigger("GiantsDeep_Body/Sector_GD", Translation.SolarSystem.GiantsDeep.Exploring, giantdeepimage);
+					CreateTrigger("DarkBramble_Body/Sector_DB", Translation.SolarSystem.DarkBramble.Exploring, darkbrambleimage);
+					CreateTrigger("DB_AnglerNestDimension_Body/Sector_AnglerNestDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_ClusterDimension_Body/Sector_ClusterDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_Elsinore_Body/Sector_ElsinoreDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_EscapePodDimension_Body/Sector_EscapePodDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_ExitOnlyDimension_Body/Sector_ExitOnlyDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_HubDimension_Body/Sector_HubDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_PioneerDimension_Body/Sector_PioneerDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_SmallNest_Body/Sector_SmallNestDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("DB_VesselDimension_Body/Sector_VesselDimension", Translation.SolarSystem.DarkBramble.Somewhere, darkbrambleimage);
+					CreateTrigger("WhiteHole_Body/Sector_WhiteHole", Translation.SolarSystem.WhiteHole.Exploring, ImageKey.whitehole);
+					CreateTrigger("WhiteholeStation_Body/Sector_WhiteholeStation", Translation.SolarSystem.WhiteHoleStation.Exploring, ImageKey.whitehole);
+					CreateTrigger("FocalBody/Sector_HGT", Translation.SolarSystem.HourglassTwins.Exploring, ImageKey.hourglasstwins);
+					CreateTrigger("Comet_Body/Sector_CO", Translation.SolarSystem.Interloper.Exploring, ImageKey.interloper);
+					CreateTrigger("HearthianMapSatellite_Body/Sector_HearthianMapSatellite", Translation.SolarSystem.MapSatellite.Checking, ImageKey.outerwilds);
+					CreateTrigger("OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon", Translation.SolarSystem.GiantsDeep.Orbiting, ImageKey.orbitalprobecannon);
+					CreateTrigger("GabbroShip_Body/Sector_GabbroShip", Translation.SolarSystem.GiantsDeep.GabbrosShip, ImageKey.ship);
+					CreateTrigger("StatueIsland_Body/Sector_StatueIsland", Translation.SolarSystem.GiantsDeep.StatueIsland, giantdeepimage);
+					CreateTrigger("GabbroIsland_Body/Sector_GabbroIsland", Translation.SolarSystem.GiantsDeep.GabbroIsland, giantdeepimage);
+					CreateTriggerVolume("GabbroIsland_Body/Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro", new Vector3(-0.09f, 1.21f, 0), 5, Translation.SolarSystem.GiantsDeep.Gabbro, giantdeepimage);
+					CreateTrigger("ConstructionYardIsland_Body/Sector_ConstructionYard", Translation.SolarSystem.GiantsDeep.Yard, giantdeepimage);
+					CreateTrigger("BrambleIsland_Body/Sector_BrambleIsland", Translation.SolarSystem.GiantsDeep.BrambleIsland, giantdeepimage);
+					CreateTrigger("QuantumIsland_Body/Sector_QuantumIsland", Translation.SolarSystem.GiantsDeep.Somewhere, giantdeepimage);
+					CreateTrigger("CannonBarrel_Body/Sector_CannonDebrisMid", Translation.SolarSystem.GiantsDeep.Orbiting, ImageKey.orbitalprobecannon);
+					CreateTrigger("CannonMuzzle_Body/Sector_CannonDebrisTip", Translation.SolarSystem.GiantsDeep.Orbiting, ImageKey.orbitalprobecannon);
+					CreateTrigger("Satellite_Body", Translation.SolarSystem.SkyShutter.Checking, ImageKey.skyshutter);
+					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", Translation.SolarSystem.BackerSatellite.Checking, ImageKey.outerwilds);
+					_shipPresence = MakePresence(Translation.SolarSystem.Ship.Inside, ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);
 					AddObservatoryHemisphere();
-					if (_outsider) ModHelper.Events.Unity.RunWhen(() => SearchUtilities.Find("PowerStation/SectorDB_PowerStation/SectorTrigger_PowerStation", false, false) != null, () => CreateTrigger("PowerStation/SectorDB_PowerStation", "Orbiting Dark Bramble.", ImageKey.powerstation));
-					SetRootPresence("Exploring the solar system.", ImageKey.sun);
+					if (_outsider) ModHelper.Events.Unity.RunWhen(() => SearchUtilities.Find("PowerStation/SectorDB_PowerStation/SectorTrigger_PowerStation", false, false) != null, () => CreateTrigger("PowerStation/SectorDB_PowerStation", Translation.SolarSystem.DarkBramble.Orbiting, ImageKey.powerstation));
+					SetRootPresence(Translation.SolarSystem.Exploring, ImageKey.sun);
 					break;
 				case OWScene.EyeOfTheUniverse:
-					SetRootPresence("Somewhere...", ImageKey.eyeoftheuniverse);
+					SetRootPresence(Translation.EyeOfTheUniverse, ImageKey.eyeoftheuniverse);
 					break;
 				case OWScene.Credits_Fast:
-					SetRootPresence("Watching the credits.", ImageKey.outerwilds);
+					SetRootPresence(Translation.CreditsFast, ImageKey.outerwilds);
 					break;
 				case OWScene.Credits_Final:
-					SetRootPresence("Beat the game.", ImageKey.outerwilds);
+					SetRootPresence(Translation.CreditsFinal, ImageKey.outerwilds);
 					break;
 				case OWScene.PostCreditsScene:
-					SetRootPresence("14.3 billion years later...", ImageKey.outerwilds);
+					SetRootPresence(Translation.PostCreditScene, ImageKey.outerwilds);
 					break;
 				case OWScene.None:
 				case OWScene.Undefined:
 				default:
-					SetRootPresence("Unknown", ImageKey.outerwilds);
+					SetRootPresence(Translation.Unknown, ImageKey.outerwilds);
 					break;
 			}
 			SetPresence(_presenceStack.Peek());

@@ -5,6 +5,7 @@
             "type": "selector",
             "value": "English",
             "options": [
+                "English",
                 "Français"
             ]
         }
