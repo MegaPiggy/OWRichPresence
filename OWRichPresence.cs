@@ -2,11 +2,9 @@
 using OWML.ModHelper;
 using DiscordRPC;
 using DiscordRPC.Unity;
-using HarmonyLib;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using OWRichPresence.API;
 using OWRichPresence.Langs;
 
@@ -46,14 +44,13 @@ namespace OWRichPresence
 		private void Awake()
 		{
 			Instance = this;
-			new Harmony("MegaPiggy.OWRichPresence").PatchAll(Assembly.GetExecutingAssembly());
 		}
 
 		private void Start()
 		{
 			// Starting here, you'll have access to OWML's mod helper.
 			InitializeTranslation();
-			TextTranslation.Get().OnLanguageChanged += InitializeTranslation;
+			TextTranslation.Get().OnLanguageChanged += InitializeTranslationWithReload;
 			ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
 
 			var logger = new OWConsoleLogger(MessageType.Debug);
