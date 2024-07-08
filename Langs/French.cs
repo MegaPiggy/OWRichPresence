@@ -39,6 +39,7 @@
 					Inside = "À l'intérieur de Âtrebois.",
 					Crater = "Explore un cratère.",
 					YoungbarkCrater = "Explore le Cratère Jeunécorce.",
+					RadioTower = "Visite la tour de transmission.",
 					SkyShutter = "Vérifie le Satellite \"Astrobjectif\"."
 				},
 				Attlerock = new Attlerock

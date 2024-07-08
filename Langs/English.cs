@@ -41,6 +41,7 @@
 					Inside = "Inside Timber Hearth.",
 					Crater = "Exploring a crater.",
 					YoungbarkCrater = "Exploring Youngbark Crater.",
+					RadioTower = "Visiting the Radio Tower.",
 					SkyShutter = "Checking on \"Sky Shutter\" Satellite."
 				},
 				Attlerock = new Attlerock

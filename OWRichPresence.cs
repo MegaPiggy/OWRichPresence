@@ -152,6 +152,9 @@ namespace OWRichPresence
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", Translation.SolarSystem.TimberHearth.YoungbarkCrater, ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_QuantumGrove", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_QuantumGroveEntrance", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_RadioTower", Translation.SolarSystem.TimberHearth.RadioTower, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines/Sector_NomaiMinesInterior", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
 					CreateTrigger("Moon_Body/Sector_THM", Translation.SolarSystem.Attlerock.Exploring, ImageKey.attlerock);

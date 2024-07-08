@@ -68,6 +68,7 @@
 		public string Inside;
 		public string Crater;
 		public string YoungbarkCrater;
+		public string RadioTower;
 		public string SkyShutter;
 	}
 
