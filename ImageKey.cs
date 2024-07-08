@@ -194,7 +194,17 @@ namespace OWRichPresence
         modjamhub,
 
         //Band Together
-        fracturedharmony
+        fracturedharmony,
+
+        //Solar Rangers
+        eggstar,
+        
+        //Reflections
+        forlornproject,
+
+        //Symbiosis
+        symbiosis = 3539,
+        altth = 3539,
 
         //And any more that add icons in future or never
     }

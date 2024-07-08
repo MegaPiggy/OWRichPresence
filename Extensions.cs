@@ -193,6 +193,15 @@ namespace OWRichPresence
             //Band Together
             ImageKey.fracturedharmony => "Fractured Harmony",
 
+            //Solar Rangers
+            ImageKey.eggstar => "Egg Star",
+
+            //Reflections
+            ImageKey.forlornproject => "Forlorn Project",
+
+            //Symbiosis
+            ImageKey.symbiosis => "Symbiosis",
+
             _ => string.Empty,
         };
 
