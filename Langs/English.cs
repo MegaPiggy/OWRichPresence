@@ -1,9 +1,9 @@
 ﻿namespace OWRichPresence.Langs
 {
-	public class English
+	public class English : OWDiscordRPCLanguage
 	{
-		public static string author = "MegaPiggy";
-		public static OWDiscordRPCTranslation Content = new()
+		public override string author => "MegaPiggy";
+		public override OWDiscordRPCTranslation Content => new()
 		{
 			TitleScreen = "In the title screen.",
 			SolarSystem = new SolarSystem

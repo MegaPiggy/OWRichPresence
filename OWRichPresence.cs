@@ -53,10 +53,10 @@ namespace OWRichPresence
 			switch (langSelected)
 			{
 				case "English":
-					Translation = English.Content;
+					Translation = new English().Content;
 					break;
 				case "Français":
-					Translation = French.Content;
+					Translation = new French().Content;
 					break;
 			}
 			ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
@@ -81,10 +81,10 @@ namespace OWRichPresence
 			switch (langSelected)
 			{
 				case "English":
-					Translation = English.Content;
+					Translation = new English().Content;
 					break;
 				case "Français":
-					Translation = French.Content;
+					Translation = new French().Content;
 					break;
 			}
 

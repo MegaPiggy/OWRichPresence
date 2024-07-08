@@ -1,9 +1,9 @@
 ﻿namespace OWRichPresence.Langs
 {
-	public class French
+	public class French : OWDiscordRPCLanguage
 	{
-		public static string author = "LOUDO";
-		public static OWDiscordRPCTranslation Content = new()
+		public override string author => "LOUDO";
+		public override OWDiscordRPCTranslation Content => new()
 		{
 			TitleScreen = "À l'écran titre.",
 			SolarSystem = new SolarSystem

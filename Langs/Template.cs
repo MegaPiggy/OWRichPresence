@@ -1,5 +1,11 @@
 ﻿namespace OWRichPresence.Langs
 {
+	public abstract class OWDiscordRPCLanguage
+	{
+		public abstract string author { get; }
+		public abstract OWDiscordRPCTranslation Content { get; }
+	}
+
 	public class OWDiscordRPCTranslation
 	{
 		public string TitleScreen;
