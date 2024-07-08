@@ -73,7 +73,6 @@ namespace OWRichPresence
 			OnSceneLoad(OWScene.TitleScreen);
 
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
-
 		}
 
 		public override void Configure(IModConfig config)
@@ -93,7 +92,6 @@ namespace OWRichPresence
 			{
 				OnSceneLoad(LoadManager.s_currentScene);
 			}
-
 		}
 
 		private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
@@ -102,7 +100,6 @@ namespace OWRichPresence
 
 		private void OnSceneLoad(OWScene loadScene)
 		{
-
 			switch (loadScene)
 			{
 				case OWScene.TitleScreen:
