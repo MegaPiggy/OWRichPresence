@@ -35,7 +35,7 @@ namespace OWRichPresence
 
 
 
-        public const string richPresenceTrigger = "RichPresenceTrigger";
+		public const string richPresenceTrigger = "RichPresenceTrigger";
 
 		public const string richPresenceTriggerVolume = "RichPresenceTriggerVolume";
 
@@ -44,22 +44,22 @@ namespace OWRichPresence
 		private void Awake()
 		{
 			Instance = this;
-        }
+		}
 
 		private void Start()
 		{
 			// Starting here, you'll have access to OWML's mod helper.
 			string langSelected = ModHelper.Config.GetSettingsValue<string>("Language");
-            switch (langSelected)
-            {
-                case "English":
-                    Translation = English.Content;
-                    break;
-                case "Français":
-                    Translation = French.Content;
-                    break;
-            }
-            ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
+			switch (langSelected)
+			{
+				case "English":
+					Translation = English.Content;
+					break;
+				case "Français":
+					Translation = French.Content;
+					break;
+			}
+			ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
 
 			var logger = new OWConsoleLogger(MessageType.Debug);
 			client = new DiscordRpcClient("1010346259757944882", -1, logger, false, new UnityNamedPipe(logger));
@@ -70,37 +70,37 @@ namespace OWRichPresence
 			_newHorizonsExamples = ModHelper.Interaction.ModExists("xen.NewHorizonsExamples");
 			_outsider = ModHelper.Interaction.ModExists("SBtT.TheOutsider");
 
-            OnSceneLoad(OWScene.TitleScreen);
+			OnSceneLoad(OWScene.TitleScreen);
 
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
 
 		}
 
-        public override void Configure(IModConfig config)
-        {
-            string langSelected = config.GetSettingsValue<string>("Language");
-            switch (langSelected)
-            {
-                case "English":
-                    Translation = English.Content;
-                    break;
-                case "Français":
-                    Translation = French.Content;
-                    break;
-            }
+		public override void Configure(IModConfig config)
+		{
+			string langSelected = config.GetSettingsValue<string>("Language");
+			switch (langSelected)
+			{
+				case "English":
+					Translation = English.Content;
+					break;
+				case "Français":
+					Translation = French.Content;
+					break;
+			}
 
 			if (LoadManager.s_currentScene != OWScene.None)
 			{
 				OnSceneLoad(LoadManager.s_currentScene);
 			}
 
-        }
+		}
 
-        private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
+		private RichPresenceTrigger CreateTriggerWithNH(string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(imageKey.KeyToText())?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, string details, ImageKey imageKey) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, details, imageKey);
 		private RichPresenceTrigger CreateTriggerWithNH(string planetName, RichPresence richPresence) => CreateTrigger(_newHorizons?.GetPlanet(planetName)?.GetComponentInChildren<Sector>()?.gameObject, richPresence);
 
-        private void OnSceneLoad(OWScene loadScene)
+		private void OnSceneLoad(OWScene loadScene)
 		{
 
 			switch (loadScene)
