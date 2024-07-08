@@ -12,6 +12,7 @@
 				TimberHearth = new TimberHearth
 				{
 					Exploring = "Explore Âtrebois.",
+					Sleeping = "Dormir à la belle étoile.",
 					LaunchPad = "Sur la piste d'attérisage.",
 					ZeroG = "Explore la grotte Zero-G.",
 					Tuff = "Visite Tuf.",
