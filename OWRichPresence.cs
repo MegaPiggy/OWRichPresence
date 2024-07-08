@@ -2,10 +2,12 @@
 using OWML.ModHelper;
 using DiscordRPC;
 using DiscordRPC.Unity;
+using HarmonyLib;
 using UnityEngine;
-using OWRichPresence.API;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using OWRichPresence.API;
 using OWRichPresence.Langs;
 
 namespace OWRichPresence
@@ -44,21 +46,14 @@ namespace OWRichPresence
 		private void Awake()
 		{
 			Instance = this;
+			new Harmony("MegaPiggy.OWRichPresence").PatchAll(Assembly.GetExecutingAssembly());
 		}
 
 		private void Start()
 		{
 			// Starting here, you'll have access to OWML's mod helper.
-			string langSelected = ModHelper.Config.GetSettingsValue<string>("Language");
-			switch (langSelected)
-			{
-				case "English":
-					Translation = English.Content;
-					break;
-				case "Français":
-					Translation = French.Content;
-					break;
-			}
+			InitializeTranslation();
+			TextTranslation.Get().OnLanguageChanged += InitializeTranslation;
 			ConsoleWriteLine($"My mod {nameof(OWRichPresence)} is loaded!", MessageType.Success);
 
 			var logger = new OWConsoleLogger(MessageType.Debug);
@@ -75,18 +70,24 @@ namespace OWRichPresence
 			LoadManager.OnCompleteSceneLoad += (originalScene, loadScene) => OnSceneLoad(loadScene);
 		}
 
-		public override void Configure(IModConfig config)
+		public void InitializeTranslation()
 		{
-			string langSelected = config.GetSettingsValue<string>("Language");
+			TextTranslation.Language langSelected = TextTranslation.Get().GetLanguage();
+			ConsoleWriteLine("InitializeTranslation " + langSelected, MessageType.Warning);
 			switch (langSelected)
 			{
-				case "English":
+				case TextTranslation.Language.ENGLISH:
 					Translation = English.Content;
 					break;
-				case "Français":
+				case TextTranslation.Language.FRENCH:
 					Translation = French.Content;
 					break;
 			}
+		}
+
+		public void InitializeTranslationWithReload()
+		{
+			InitializeTranslation();
 
 			if (LoadManager.s_currentScene != OWScene.None)
 			{
