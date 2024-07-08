@@ -28,6 +28,8 @@ There is custom icon support for the following other mods:
 - [Echo Hike](https://outerwildsmods.com/mods/echohike/)
 - [Jam Hub](https://outerwildsmods.com/mods/jamhub/)
 - [Band Together](https://outerwildsmods.com/mods/bandtogether/)
+- [Solar Rangers](https://outerwildsmods.com/mods/solarrangers/)
+- [Symbiosis](https://outerwildsmods.com/mods/symbiosis/)
 
 Ask me if you want support for your mod added.
 
