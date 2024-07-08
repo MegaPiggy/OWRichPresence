@@ -77,6 +77,7 @@ namespace OWRichPresence
 			switch (langSelected)
 			{
 				case TextTranslation.Language.ENGLISH:
+				default:
 					Translation = English.Content;
 					break;
 				case TextTranslation.Language.FRENCH:
