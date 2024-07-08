@@ -116,7 +116,7 @@ namespace OWRichPresence
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)", 2, "Visiting Hornfels.", ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_WaterWays", "Inside Timber Hearth.", ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiCrater", "Exploring a crater.", ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", "Exploring a crater.", ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", "Exploring Youngbark Crater.", ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", "Visiting Tektite.", ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, "Visiting Tektite.", ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", "Inside Timber Hearth.", ImageKey.timberhearth);
