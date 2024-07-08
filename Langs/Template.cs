@@ -9,6 +9,7 @@
 		public string CreditsFinal;
 		public string PostCreditScene;
 		public string Unknown;
+		public Custom Custom;
 	}
 
 	public class SolarSystem
@@ -175,4 +176,9 @@
 		public string Inside;
 	}
 
+	public class Custom
+	{
+		public string Exploring;
+		public string Warping;
+	}
 }

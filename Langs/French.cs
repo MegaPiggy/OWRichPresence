@@ -133,6 +133,11 @@
 			CreditsFinal = "A fini le jeu.",
 			PostCreditScene = "14,3 milliards d'années plus tard...",
 			Unknown = "Inconnu",
+			Custom = new Custom
+			{
+				Exploring = "En explorant {0}.",
+				Warping = "En route vers {0}."
+			}
 		};
 	}
 }

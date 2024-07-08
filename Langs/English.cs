@@ -136,6 +136,11 @@
 			CreditsFinal = "Beat the game.",
 			PostCreditScene = "14.3 billion years later...",
 			Unknown = "Unknown",
+			Custom = new Custom
+			{
+				Exploring = "Exploring {0}.",
+				Warping = "Warping to {0}."
+			}
 		};
 	}
 }
