@@ -5,9 +5,9 @@ namespace OWRichPresence.Langs
     public class French
     {
         public static string author = "LOUDO";
-        public static GlobalLangText Content = new()
+        public static OWDiscordRPCTranslation Content = new()
         {
-            TitleScreen = "Dans l'écran titre.",
+            TitleScreen = "À l'écran titre.",
             SolarSystem = new SolarSystem
             {
                 Exploring = "Explore le système solaire.",
@@ -38,7 +38,8 @@ namespace OWRichPresence.Langs
                     Hal = "Visite Hal.",
                     Hornfels = "Visite Cornée.",
                     Inside = "À l'intérieur de Âtrebois.",
-                    Crater = "Explore un cratère."
+                    Crater = "Explore un cratère.",
+                    SkyShutter = "Vérifie le Satellite \"Astrobjectif\"."
                 },
                 Attlerock = new Attlerock
                 {
@@ -48,7 +49,7 @@ namespace OWRichPresence.Langs
                 BrittleHollow = new BrittleHollow
                 {
                     Exploring = "Explore Cravité.",
-                    Crossroads = "Explore l'Observatoire Sud.",
+                    Crossroads = "Explore la Croisée des chemins",
                     Riebeck = "Visite Riebeck."
                 },
                 HollowsLantern = new HollowsLantern
@@ -86,7 +87,7 @@ namespace OWRichPresence.Langs
                     Exploring = "Explore Léviathe.",
                     Orbiting = "Orbite autour de Léviathe.",
                     GabbrosShip = "Vérifie la fusée de Gabbro.",
-                    StatueIsland = "Explore l'île de la statue.",
+                    StatueIsland = "Explore l'île de la Statue.",
                     GabbroIsland = "Explore l'île de Gabbro.",
                     Gabbro = "Visite Gabbro.",
                     Yard = "Explore le site de construction.",
@@ -119,22 +120,18 @@ namespace OWRichPresence.Langs
                 {
                     Checking = "Vérifie la Carte Satellite."
                 },
-                SkyShutter = new SkyShutter
-                {
-                    Checking = "Vérifie le Satellite \"Sky Shutter\"."
-                },
                 BackerSatellite = new BackerSatellite
                 {
                     Checking = "Vérifie le Backer Satellite."
                 },
                 Ship = new Ship
                 {
-                    Inside = "Dans le vaisseau."
+                    Inside = "Dans la fusée."
                 }
             },
-            EyeOfTheUniverse = "Quelque pars...",
+            EyeOfTheUniverse = "Quelque part...",
             CreditsFast = "Regarde les crédits.",
-            CreditsFinal = "À fini le jeu.",
+            CreditsFinal = "A fini le jeu.",
             PostCreditScene = "14,3 milliards d'années plus tard...",
             Unknown = "Inconnu"
         };

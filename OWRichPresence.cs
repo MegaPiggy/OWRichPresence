@@ -31,7 +31,7 @@ namespace OWRichPresence
 		private INewHorizons _newHorizons;
 		private bool _newHorizonsExamples;
 		private bool _outsider;
-		private GlobalLangText Translation = new();
+		private OWDiscordRPCTranslation Translation = new();
 
 
 
@@ -197,7 +197,7 @@ namespace OWRichPresence
 					CreateTrigger("QuantumIsland_Body/Sector_QuantumIsland", Translation.SolarSystem.GiantsDeep.Somewhere, giantdeepimage);
 					CreateTrigger("CannonBarrel_Body/Sector_CannonDebrisMid", Translation.SolarSystem.GiantsDeep.Orbiting, ImageKey.orbitalprobecannon);
 					CreateTrigger("CannonMuzzle_Body/Sector_CannonDebrisTip", Translation.SolarSystem.GiantsDeep.Orbiting, ImageKey.orbitalprobecannon);
-					CreateTrigger("Satellite_Body", Translation.SolarSystem.SkyShutter.Checking, ImageKey.skyshutter);
+					CreateTrigger("Satellite_Body", Translation.SolarSystem.TimberHearth.SkyShutter, ImageKey.skyshutter);
 					CreateTrigger("BackerSatellite_Body/Sector_BackerSatellite", Translation.SolarSystem.BackerSatellite.Checking, ImageKey.outerwilds);
 					_shipPresence = MakePresence(Translation.SolarSystem.Ship.Inside, ImageKey.ship);
 					CreateTrigger("Ship_Body/ShipSector", _shipPresence);

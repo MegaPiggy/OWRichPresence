@@ -3,7 +3,7 @@
     public class English
     {
         public static string author = "MegaPiggy";
-        public static GlobalLangText Content = new()
+        public static OWDiscordRPCTranslation Content = new()
         {
             TitleScreen = "In the title screen.",
             SolarSystem = new SolarSystem
@@ -39,7 +39,8 @@
                     Hal = "Visiting Hal.",
                     Hornfels = "Visiting Hornfels.",
                     Inside = "Inside Timber Hearth.",
-                    Crater = "Exploring a crater."
+                    Crater = "Exploring a crater.",
+                    SkyShutter = "Checking on \"Sky Shutter\" Satellite."
                 },
                 Attlerock = new Attlerock
                 {
@@ -119,10 +120,6 @@
                 MapSatellite = new MapSatellite
                 {
                     Checking = "Checking on the Map Satellite."
-                },
-                SkyShutter = new SkyShutter
-                {
-                    Checking = "Checking on \"Sky Shutter\" Satellite."
                 },
                 BackerSatellite = new BackerSatellite
                 {

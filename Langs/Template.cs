@@ -1,6 +1,6 @@
 ﻿namespace OWRichPresence.Langs
 {
-    public class GlobalLangText
+    public class OWDiscordRPCTranslation
     {
         public string TitleScreen;
         public SolarSystem SolarSystem;
@@ -31,7 +31,6 @@
         public HourglassTwins HourglassTwins;
         public Interloper Interloper;
         public MapSatellite MapSatellite;
-        public SkyShutter SkyShutter;
         public BackerSatellite BackerSatellite;
         public Ship Ship;
     }
@@ -67,6 +66,7 @@
         public string Hornfels;
         public string Inside;
         public string Crater;
+        public string SkyShutter;
     }
 
     public class Attlerock
@@ -160,11 +160,6 @@
     }
 
     public class MapSatellite
-    {
-        public string Checking;
-    }
-
-    public class SkyShutter
     {
         public string Checking;
     }
