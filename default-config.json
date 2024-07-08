@@ -1,3 +1,13 @@
 {
-  "enabled": true
+    "enabled": true,
+    "settings": {
+        "Language": {
+            "type": "selector",
+            "value": "English",
+            "options": [
+                "English",
+                "Français"
+            ]
+        }
+    }
 }
