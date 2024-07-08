@@ -40,6 +40,7 @@
                     Hornfels = "Visiting Hornfels.",
                     Inside = "Inside Timber Hearth.",
                     Crater = "Exploring a crater.",
+                    YoungbarkCrater = "Exploring Youngbark Crater.",
                     SkyShutter = "Checking on \"Sky Shutter\" Satellite."
                 },
                 Attlerock = new Attlerock

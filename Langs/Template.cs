@@ -66,6 +66,7 @@
         public string Hornfels;
         public string Inside;
         public string Crater;
+        public string YoungbarkCrater;
         public string SkyShutter;
     }
 

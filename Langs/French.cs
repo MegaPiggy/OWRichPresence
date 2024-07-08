@@ -39,6 +39,7 @@ namespace OWRichPresence.Langs
                     Hornfels = "Visite Cornée.",
                     Inside = "À l'intérieur de Âtrebois.",
                     Crater = "Explore un cratère.",
+                    YoungbarkCrater = "Explore le Cratère Jeunécorce.",
                     SkyShutter = "Vérifie le Satellite \"Astrobjectif\"."
                 },
                 Attlerock = new Attlerock

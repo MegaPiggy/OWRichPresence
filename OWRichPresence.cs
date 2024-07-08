@@ -151,7 +151,7 @@ namespace OWRichPresence
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)", 2, Translation.SolarSystem.TimberHearth.Hornfels, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_WaterWays", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiCrater", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
-					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", Translation.SolarSystem.TimberHearth.Crater, ImageKey.timberhearth);
+					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_ImpactCrater", Translation.SolarSystem.TimberHearth.YoungbarkCrater, ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/WatchVolume", Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
 					CreateTriggerVolume("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2", 2, Translation.SolarSystem.TimberHearth.Tektite, ImageKey.timberhearth);
 					CreateTrigger("TimberHearth_Body/Sector_TH/Sector_NomaiMines", Translation.SolarSystem.TimberHearth.Inside, ImageKey.timberhearth);
