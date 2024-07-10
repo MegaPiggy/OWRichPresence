@@ -7,7 +7,7 @@ Adds discord rich presence to Outer Wilds
 ![Exploring Brittle Hollow](https://github.com/MegaPiggy/OWRichPresence/assets/34462599/2b2df12d-e467-455d-a0ae-18b9ad722620)
 
 ## Translations
-In this mod's settings you can set which language you want the rich presence to show up in.
+The language you have your game set to will also be what language the rich presence will show up in.
 Currently only English and French are supported.
 
 ## Mod Support
