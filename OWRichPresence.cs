@@ -80,6 +80,9 @@ namespace OWRichPresence
 				case TextTranslation.Language.FRENCH:
 					Translation = French.Content;
 					break;
+				case TextTranslation.Language.SPANISH_LA:
+					Translation = Spanish.Content;
+					break;
 			}
 		}
 
