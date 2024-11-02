@@ -243,6 +243,7 @@ namespace OWRichPresence
 			rpo.SetActive(false);
 			var hemisphere = rpo.AddComponent<HemisphereShape>();
 			hemisphere.radius = 12;
+			hemisphere.pointChecksOnly = true;
 			var owtv = rpo.AddComponent<OWTriggerVolume>();
 			owtv._shape = hemisphere;
 			var rptv = rpo.AddComponent<RichPresenceTriggerVolume>();
