@@ -1,6 +1,6 @@
 ﻿namespace OWRichPresence.Langs
 {
-	public class English
+	public class Polish
 	{
 		public static string author = "Ganymede2076";
 		public static OWDiscordRPCTranslation Content = new()
