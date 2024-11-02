@@ -8,7 +8,7 @@ Adds discord rich presence to Outer Wilds
 
 ## Translations
 The language you have your game set to will also be what language the rich presence will show up in.
-Currently only English, French, Spanish, and German are supported.
+Currently only English, French, Spanish, German, and Polish are supported.
 
 ## Mod Support
 There is custom icon support for the following other mods:
@@ -42,5 +42,6 @@ Ask me if you want support for your mod added.
 - French Translation by [LOUDO56](https://github.com/LOUDO56)
 - Spanish Translation by [miguerubsk](https://github.com/miguerubsk)
 - German Translation by [Derko8](https://github.com/Derko8)
+- Polish Translation by [Ganymede2076](https://github.com/Minecraft633)
 - [Discord Rich Presence C#](https://github.com/Lachee/discord-rpc-csharp)
 - [Unity Named Pipes](https://github.com/Lachee/unity-named-pipes)
