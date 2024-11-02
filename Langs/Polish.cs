@@ -40,7 +40,7 @@
 					Hornfels = "Wizutuje Hornfels.",
 					Inside = "W środku Drzewnej Przystani.",
 					Crater = "Eksploruje krater.",
-					YoungbarkCrater = "Eksploruje Youngbark Crater.",
+					YoungbarkCrater = "Eksploruje Krater Młodokory.",
 					RadioTower = "Wizytuje Wieże radiową.",
 					SkyShutter = "Sprawdza satelite \"Niebiańska Migawka\"."
 				},
