@@ -207,6 +207,19 @@ namespace OWRichPresence
             //Symbiosis
             ImageKey.symbiosis => "Symbiosis",
 
+            //The Stranger They Are
+            ImageKey.anglerseye => "Angler's Eye",
+            ImageKey.nearestneighbor => "Nearest Neighbor",
+            ImageKey.sizzlingsands => "Sizzling Sands",
+            ImageKey.ringedgiant => "Ringed Giant",
+            ImageKey.ringedlaboratory => "Ringed Laboratory",
+            ImageKey.strangershomeworld => "Strangers' Homeworld",
+            ImageKey.velvetvortex => "Velvet Vortex",
+            ImageKey.burningbombardier => "Burning Bombardier",
+            ImageKey.distantenigma => "Distant Enigma",
+            ImageKey.strandedvessel => "Stranded Vessel",
+            ImageKey.strangersprobe => "Strangers' Probe",
+
             _ => string.Empty,
         };
 

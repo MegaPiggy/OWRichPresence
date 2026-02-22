@@ -213,6 +213,19 @@ namespace OWRichPresence
         symbiosis = 3540,
         altth = 3540,
 
+        //The Stranger They Are
+        anglerseye = 8782,
+        nearestneighbor,
+        sizzlingsands,
+        ringedgiant,
+        ringedlaboratory,
+        strangershomeworld,
+        velvetvortex,
+        burningbombardier,
+        distantenigma,
+        strandedvessel,
+        strangersprobe
+
         //And any more that add icons in future or never
     }
 }
