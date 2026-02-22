@@ -71,8 +71,12 @@ namespace OWRichPresence
             ImageKey.terralure => "Terra Lure",
             ImageKey.wetrock => "Wetrock",
             ImageKey.hinderingskies => "Hindering Skies",
-            ImageKey.lava1 => "Lava 1",
-            ImageKey.lava2 => "Lava 2",
+            ImageKey.viridianflow => "Viridian Flow",
+            ImageKey.jademaw => "Jade Maw",
+            ImageKey.elegy => "Elegy",
+            ImageKey.requiem => "Requiem",
+            ImageKey.rondo => "Rondo",
+            ImageKey.puzzlestation => "Puzzle Station",
 
             //TRAPPIST-1
             ImageKey.trappist1 => "TRAPPIST-1",

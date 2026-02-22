@@ -63,6 +63,10 @@ namespace OWRichPresence
         frigidpygmy,
         giantsdeepexamples,
         lavatwin,
+        viridianflow = 106,
+        lava1 = 106,
+        jademaw = 107,
+        lava2 = 107,
         lavatwins,
         lightgateway,
         lunalure,
@@ -73,8 +77,10 @@ namespace OWRichPresence
         terralure,
         wetrock,
         hinderingskies,
-        lava1,
-        lava2,
+        elegy,
+        requiem,
+        rondo,
+        puzzlestation,
 
         //TRAPPIST-1
         trappist1 = 190,
