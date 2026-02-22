@@ -338,11 +338,13 @@ namespace OWRichPresence
 		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, Vector3.zero, radius, details, imageKey);
 		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, float radius, RichPresence richPresence) => CreateTriggerVolume(parent, Vector3.zero, radius, richPresence);
 		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, string details, ImageKey imageKey) => CreateTriggerVolume(parent, localPosition, radius, MakePresence(details, imageKey));
-		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, RichPresence richPresence)
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, RichPresence richPresence) => CreateTriggerVolume(parent, localPosition, radius, richPresence, true);
+
+		public static RichPresenceTriggerVolume CreateTriggerVolume(GameObject parent, Vector3 localPosition, float radius, RichPresence richPresence, bool force)
 		{
 			if (parent == null) return null;
 			var rpo = parent.FindChild(richPresenceTriggerVolume);
-			if (rpo != null)
+			if (!force && rpo != null)
 			{
 				var rptv = rpo.GetAddComponent<RichPresenceTriggerVolume>();
 				rptv.presence = richPresence;
@@ -371,11 +373,13 @@ namespace OWRichPresence
 
 		public static RichPresenceTrigger CreateTrigger(GameObject parent, string details, ImageKey imageKey) => CreateTrigger(parent, MakePresence(details, imageKey));
 
-		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence)
+		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence) => CreateTrigger(parent, richPresence, true);
+
+		public static RichPresenceTrigger CreateTrigger(GameObject parent, RichPresence richPresence, bool force)
 		{
 			if (parent == null) return null;
 			var rpo = parent.FindChild(richPresenceTrigger);
-			if (rpo != null)
+			if (!force && rpo != null)
 			{
 				var rpt = rpo.GetAddComponent<RichPresenceTrigger>();
 				rpt.presence = richPresence;
