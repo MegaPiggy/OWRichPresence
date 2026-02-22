@@ -1,6 +1,6 @@
 namespace OWRichPresence.Langs
 {
-    public class Chinese_simple
+    public class ChineseSimple
     {
         public static string author = "SheepCreater2";
         public static OWDiscordRPCTranslation Content = new()
