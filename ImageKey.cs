@@ -179,6 +179,7 @@ namespace OWRichPresence
 
         //Axiom's Refuge
         axiom,
+        brokensatellite,
         aicale,
 
         //Callis's Thesis
@@ -209,8 +210,8 @@ namespace OWRichPresence
         forlornproject,
 
         //Symbiosis
-        symbiosis = 3539,
-        altth = 3539,
+        symbiosis = 3540,
+        altth = 3540,
 
         //And any more that add icons in future or never
     }

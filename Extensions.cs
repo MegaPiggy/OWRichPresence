@@ -174,6 +174,7 @@ namespace OWRichPresence
 
             //Axiom's Refuge
             ImageKey.axiom => "Axiom",
+            ImageKey.brokensatellite => "Broken Satellite",
             ImageKey.aicale => "Aicale",
 
             //Callis's Thesis
