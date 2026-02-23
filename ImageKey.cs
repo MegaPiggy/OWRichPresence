@@ -213,6 +213,58 @@ namespace OWRichPresence
         symbiosis = 3540,
         altth = 3540,
 
+        // Jam 5
+        centralstation = 5265,
+
+        // Project ARC
+        verdantbeacon,
+        emeraldreverie,
+        anomalystation,
+
+        // Heliostudy
+        heliocenter = 5270,
+        walker_jam5_star = 5270,
+        shatteredgeode = 5271,
+        walker_jam5_planet1 = 5271,
+        thebigone = 5272,
+        walker_jam5_planet2 = 5272,
+        daucus = 5273,
+        walker_jam5_planet3 = 5273,
+        glacialabyss = 5274,
+        walker_jam5_planet4 = 5274,
+        orrerystation = 5275,
+        walker_jam5_station = 5275,
+
+        // Powerfail
+        bruisedbrother,
+        familliarrefuse,
+        refuseslightbulb,
+        sunsetsister,
+        bruisedbrotherasteroid10,
+
+        // Diorama
+        dioramainterface,
+
+        // Cosmic Curators
+        cosmiccurators_astralbody_silver_lining,
+        cosmiccurators_astralbody_scaled_museum,
+        cosmiccurators_astralbody_ominous_orbiter,
+
+        // Core Collapse
+        theastrophytum,
+        hiddenlight,
+
+        // Under a Radio Moon
+        radiomoon = 5400,
+        t0187 = 5400,
+
+        // On A Rail
+        stellarexpress = 5500,
+        thestellarexpress = 5500,
+        frostcar,
+        locomocean,
+        sprucecaboose,
+
         //The Stranger They Are
         anglerseye = 8782,
         nearestneighbor,

@@ -207,6 +207,50 @@ namespace OWRichPresence
             //Symbiosis
             ImageKey.symbiosis => "Symbiosis",
 
+            //Jam 5
+            ImageKey.centralstation => "Central Station",
+
+            //Project ARC
+            ImageKey.verdantbeacon => "Verdant Beacon",
+            ImageKey.emeraldreverie => "Emerald Reverie",
+            ImageKey.anomalystation => "Anomaly Station",
+
+            //Heliostudy
+            ImageKey.heliocenter => "Heliocenter",
+            ImageKey.shatteredgeode => "Shattered Geode",
+            ImageKey.thebigone => "The Big One",
+            ImageKey.daucus => "Daucus",
+            ImageKey.glacialabyss => "Glacial Abyss",
+            ImageKey.orrerystation => "Orrery Station",
+
+            //Powerfail
+            ImageKey.bruisedbrother => "Bruised Brother",
+            ImageKey.familliarrefuse => "Familiar Refuse",
+            ImageKey.refuseslightbulb => "Refuse's Lightbulb",
+            ImageKey.sunsetsister => "Sunset Sister",
+            ImageKey.bruisedbrotherasteroid10 => "Asteroid",
+
+            //Diorama
+            ImageKey.dioramainterface => "Diorama Interface",
+
+            //Cosmic Curators
+            ImageKey.cosmiccurators_astralbody_silver_lining => "Silver Lining",
+            ImageKey.cosmiccurators_astralbody_scaled_museum => "Scaled Museum",
+            ImageKey.cosmiccurators_astralbody_ominous_orbiter => "Ominous Orbiter",
+
+            //Core Collapse
+            ImageKey.theastrophytum => "The Astrophytum",
+            ImageKey.hiddenlight => "Hidden Light",
+
+            //Under a Radio Moon
+            ImageKey.radiomoon => "Radio Moon",
+
+            //On A Rail
+            ImageKey.stellarexpress => "Stellar Express",
+            ImageKey.frostcar => "Frost Car",
+            ImageKey.locomocean => "Locomocean",
+            ImageKey.sprucecaboose => "Spruce Caboose",
+
             //The Stranger They Are
             ImageKey.anglerseye => "Angler's Eye",
             ImageKey.nearestneighbor => "Nearest Neighbor",
