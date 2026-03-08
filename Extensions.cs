@@ -259,6 +259,12 @@ namespace OWRichPresence
             ImageKey.locomocean => "Locomocean",
             ImageKey.sprucecaboose => "Spruce Caboose",
 
+            //Dreambound
+            ImageKey.ringedplanet => "Wraith Dream",
+
+            //Guardian
+            ImageKey.suncore => "Sun Core",
+
             //The Stranger They Are
             ImageKey.anglerseye => "Angler's Eye",
             ImageKey.nearestneighbor => "Nearest Neighbor",

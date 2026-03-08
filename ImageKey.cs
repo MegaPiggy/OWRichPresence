@@ -273,6 +273,12 @@ namespace OWRichPresence
         locomocean,
         sprucecaboose,
 
+        // Dreambound
+        ringedplanet = 7248,
+
+        // Guardian
+        suncore = 8273,
+
         //The Stranger They Are
         anglerseye = 8782,
         nearestneighbor,
