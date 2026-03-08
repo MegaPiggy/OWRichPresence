@@ -207,6 +207,14 @@ namespace OWRichPresence
             //Symbiosis
             ImageKey.symbiosis => "Symbiosis",
 
+            //Fret's Quest
+            ImageKey.whitesun => "White Sun",
+            ImageKey.themagicbanjo => "The Magic Banjo",
+            ImageKey.loststrings => "Lost Strings",
+            ImageKey.greenbase => "Green Base",
+            ImageKey.bracketsrest => "Bracket's Rest",
+            ImageKey.driedtears => "Dried Tears",
+
             //Jam 5
             ImageKey.centralstation => "Central Station",
 

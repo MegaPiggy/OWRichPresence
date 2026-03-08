@@ -22,6 +22,7 @@ There is custom icon support for the following other mods:
 - [Evacuation](https://outerwildsmods.com/mods/evacuation/)
 - [Heliostudy](https://outerwildsmods.com/mods/heliostudy/)
 - [The Cosmic Curators](https://outerwildsmods.com/mods/thecosmiccurators/)
+- [Fret's Quest](https://outerwildsmods.com/mods/fretsquest/)
 - [Project ARC](https://outerwildsmods.com/mods/projectarc/)
 - [On A Rail](https://outerwildsmods.com/mods/onarail/)
 - [Under a Radio Moon](https://outerwildsmods.com/mods/underaradiomoon/)

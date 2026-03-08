@@ -213,6 +213,14 @@ namespace OWRichPresence
         symbiosis = 3540,
         altth = 3540,
 
+        //Fret's Quest
+        whitesun = 3738,
+        themagicbanjo,
+        loststrings,
+        greenbase,
+        bracketsrest,
+        driedtears,
+
         // Jam 5
         centralstation = 5265,
 
