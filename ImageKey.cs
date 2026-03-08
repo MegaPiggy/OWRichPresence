@@ -77,6 +77,8 @@ namespace OWRichPresence
         terralure,
         wetrock,
         hinderingskies,
+        hymn,
+        waltz,
         elegy,
         requiem,
         rondo,

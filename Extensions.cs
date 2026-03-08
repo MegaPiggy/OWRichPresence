@@ -73,6 +73,8 @@ namespace OWRichPresence
             ImageKey.hinderingskies => "Hindering Skies",
             ImageKey.viridianflow => "Viridian Flow",
             ImageKey.jademaw => "Jade Maw",
+            ImageKey.hymn => "Hymn",
+            ImageKey.waltz => "Waltz",
             ImageKey.elegy => "Elegy",
             ImageKey.requiem => "Requiem",
             ImageKey.rondo => "Rondo",
