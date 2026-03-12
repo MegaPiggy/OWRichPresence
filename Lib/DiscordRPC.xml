@@ -31,12 +31,12 @@
         </member>
         <member name="T:DiscordRPC.DiscordRpcClient">
             <summary>
-            A Discord RPC Client which is used to send Rich Presence updates and receive Join / Spectate events.
+            A Discord RPC Client which is used to send Rich Presence updates and receive Join events.
             </summary>
         </member>
         <member name="P:DiscordRPC.DiscordRpcClient.HasRegisteredUriScheme">
             <summary>
-            Gets a value indicating if the client has registered a URI Scheme. If this is false, Join / Spectate events will fail.
+            Gets a value indicating if the client has registered a URI Scheme. If this is false, Join events will fail.
             <para>To register a URI Scheme, call <see cref="M:DiscordRPC.DiscordRpcClient.RegisterUriScheme(System.String,System.String)"/>.</para>
             </summary>
         </member>
@@ -190,13 +190,13 @@
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.#ctor(System.String)">
             <summary>
-            Creates a new Discord RPC Client which can be used to send Rich Presence and receive Join / Spectate events.
+            Creates a new Discord RPC Client which can be used to send Rich Presence and receive Join events.
             </summary>
             <param name="applicationID">The ID of the application created at discord's developers portal.</param>
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.#ctor(System.String,System.Int32,DiscordRPC.Logging.ILogger,System.Boolean,DiscordRPC.IO.INamedPipeClient)">
             <summary>
-            Creates a new Discord RPC Client which can be used to send Rich Presence and receive Join / Spectate events. This constructor exposes more advance features such as custom NamedPipeClients and Loggers.
+            Creates a new Discord RPC Client which can be used to send Rich Presence and receive Join events. This constructor exposes more advance features such as custom NamedPipeClients and Loggers.
             </summary>
             <param name="applicationID">The ID of the application created at discord's developers portal.</param>
             <param name="pipe">The pipe to connect too. If -1, then the client will scan for the first available instance of Discord.</param>
@@ -223,6 +223,22 @@
             <para>Because of the 30 second timeout, it is recommended to call <seealso cref="M:DiscordRPC.DiscordRpcClient.Invoke"/> faster than every 15 seconds to give your users adequate time to respond to the request.</para>
             </summary>
             <param name="request">The request that is being responded too.</param>
+            <param name="acceptRequest">Accept the join request.</param>
+        </member>
+        <member name="M:DiscordRPC.DiscordRpcClient.Respond(DiscordRPC.User,System.Boolean)">
+            <summary>
+            Respond to a Join Request. All requests will timeout after 30 seconds.
+            <para>Because of the 30 second timeout, it is recommended to call <seealso cref="M:DiscordRPC.DiscordRpcClient.Invoke"/> faster than every 15 seconds to give your users adequate time to respond to the request.</para>
+            </summary>
+            <param name="user">The user to respond to.</param>
+            <param name="acceptRequest">Accept the join request.</param>
+        </member>
+        <member name="M:DiscordRPC.DiscordRpcClient.Respond(System.UInt64,System.Boolean)">
+            <summary>
+            Respond to a Join Request. All requests will timeout after 30 seconds.
+            <para>Because of the 30 second timeout, it is recommended to call <seealso cref="M:DiscordRPC.DiscordRpcClient.Invoke"/> faster than every 15 seconds to give your users adequate time to respond to the request.</para>
+            </summary>
+            <param name="userID">The ID of the user to respond to.</param>
             <param name="acceptRequest">Accept the join request.</param>
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.SetPresence(DiscordRPC.RichPresence)">
@@ -279,6 +295,13 @@
             Updates only the <see cref="P:DiscordRPC.BaseRichPresence.State"/> of the <see cref="P:DiscordRPC.DiscordRpcClient.CurrentPresence"/> and sends the updated presence to Discord. Returns the newly edited Rich Presence.
             </summary>
             <param name="state">The state of the Rich Presence</param>
+            <returns>Updated Rich Presence</returns>
+        </member>
+        <member name="M:DiscordRPC.DiscordRpcClient.UpdateName(System.String)">
+            <summary>
+            Updates only the <see cref="P:DiscordRPC.BaseRichPresence.Name"/> of the <see cref="P:DiscordRPC.DiscordRpcClient.CurrentPresence"/> and sends the updated presence to Discord. Returns the newly edited Rich Presence.
+            </summary>
+            <param name="name"></param>
             <returns>Updated Rich Presence</returns>
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.UpdateParty(DiscordRPC.Party)">
@@ -368,7 +391,7 @@
         <member name="M:DiscordRPC.DiscordRpcClient.RegisterUriScheme(System.String,System.String)">
             <summary>
             Registers the application executable to a custom URI Scheme.
-            <para>This is required for the Join and Spectate features. Discord will run this custom URI Scheme to launch your application when a user presses either of the buttons.</para>
+            <para>This is required for the Join feature. Discord will run this custom URI Scheme to launch your application when a user presses either of the buttons.</para>
             </summary>
             <param name="steamAppID">Optional Steam ID. If supplied, Discord will launch the game through steam instead of directly calling it.</param>
             <param name="executable">The path to the executable. If null, the path to the current executable will be used instead.</param>
@@ -376,14 +399,14 @@
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.Subscribe(DiscordRPC.EventType)">
             <summary>
-            Subscribes to an event sent from discord. Used for Join / Spectate feature.
+            Subscribes to an event sent from discord. Used for Join feature.
             <para>Requires the UriScheme to be registered.</para>
             </summary>
             <param name="type">The event type to subscribe to</param>
         </member>
         <member name="M:DiscordRPC.DiscordRpcClient.Unsubscribe(DiscordRPC.EventType)">
             <summary>
-            Unsubscribe from the event sent by discord. Used for Join / Spectate feature.
+            Unsubscribe from the event sent by discord. Used for Join feature.
             <para>Requires the UriScheme to be registered.</para>
             </summary>
             <param name="type">The event type to unsubscribe from</param>
@@ -598,6 +621,15 @@
         <member name="F:DiscordRPC.BaseRichPresence._stateUrl">
             <summary>Inernal inner state URL string</summary>
         </member>
+        <member name="P:DiscordRPC.BaseRichPresence.Name">
+            <summary>
+            Name that is displayed for the activity, replacing base application name
+            <para>Max 256 characters</para>
+            </summary>
+        </member>
+        <member name="F:DiscordRPC.BaseRichPresence._name">
+            <summary>Name string</summary>
+        </member>
         <member name="P:DiscordRPC.BaseRichPresence.Details">
             <summary>
             What the user is currently doing. For example, "Competitive - Total Mayhem".
@@ -633,7 +665,7 @@
         </member>
         <member name="P:DiscordRPC.BaseRichPresence.Secrets">
             <summary>
-            The secrets used for Join / Spectate. Secrets are obfuscated data of your choosing. They could be match ids, player ids, lobby ids, etc. Make this object null if you do not wish too / unable too implement the Join / Request feature.
+            The secrets used for Joining. Secrets are obfuscated data of your choosing. They could be match ids, player ids, lobby ids, etc. Make this object null if you do not wish too / unable too implement the Join / Request feature.
             <para>To keep security on the up and up, Discord requires that you properly hash/encode/encrypt/put-a-padlock-on-and-swallow-the-key-but-wait-then-how-would-you-open-it your secrets.</para>
             <para>Visit the <see href="https://discordapp.com/developers/docs/rich-presence/how-to#secrets">Rich Presence How-To</see> for more information.</para>
             </summary>
@@ -740,6 +772,13 @@
             <param name="stateUrl">State URL when clicking on the state text.</param>
             <returns>The modified Rich Presence.</returns>
         </member>
+        <member name="M:DiscordRPC.RichPresence.WithName(System.String)">
+            <summary>
+            Sets the name of the Rich Presence. See also <seealso cref="P:DiscordRPC.BaseRichPresence.Name"/>.
+            </summary>
+            <param name="name">Name of the current activity, overwrites base app name.</param>
+            <returns>The modified Rich Presence.</returns>
+        </member>
         <member name="M:DiscordRPC.RichPresence.WithDetails(System.String)">
             <summary>
             Sets the details of the Rich Presence. See also <seealso cref="P:DiscordRPC.BaseRichPresence.Details"/>.
@@ -793,7 +832,7 @@
             <summary>
             Sets the Rich Presence's secrets. See also <seealso cref="T:DiscordRPC.Secrets"/>.
             </summary>
-            <param name="secrets">The secrets used for Join / Spectate.</param>
+            <param name="secrets">The secrets used for Joining.</param>
             <returns>The modified Rich Presence.</returns>
         </member>
         <member name="M:DiscordRPC.RichPresence.WithButtons(DiscordRPC.Button,DiscordRPC.Button)">
@@ -840,20 +879,20 @@
         </member>
         <member name="T:DiscordRPC.Secrets">
             <summary>
-            The secrets used for Join / Spectate. Secrets are obfuscated data of your choosing. They could be match ids, player ids, lobby ids, etc.
+            The secrets used for Joining. Secrets are obfuscated data of your choosing. They could be match ids, player ids, lobby ids, etc.
             <para>To keep security on the up and up, Discord requires that you properly hash/encode/encrypt/put-a-padlock-on-and-swallow-the-key-but-wait-then-how-would-you-open-it your secrets.</para>
-            <para>You should send discord data that someone else's game client would need to join or spectate their friend. If you can't or don't want to support those actions, you don't need to send secrets.</para>
+            <para>You should send discord data that someone else's game client would need to join their friend. If you can't or don't want to support those actions, you don't need to send secrets.</para>
             <para>Visit the <see href="https://discordapp.com/developers/docs/rich-presence/how-to#secrets">Rich Presence How-To</see> for more information.</para>
             </summary>
         </member>
         <member name="F:DiscordRPC.Secrets.MatchSecret">
             <summary>
-            The unique match code to distinguish different games/lobbies. Use <see cref="M:DiscordRPC.Secrets.CreateSecret(System.Random)"/> to get an appropriately sized secret. 
+            The unique match code to distinguish different games/lobbies. Use <see cref="!:Secrets.CreateSecret(Random)"/> to get an appropriately sized secret. 
             <para>This cannot be null and must be supplied for the  Join / Spectate feature to work.</para>
             <para>Max Length of 128 characters</para>
             </summary>
         </member>
-        <member name="P:DiscordRPC.Secrets.JoinSecret">
+        <member name="P:DiscordRPC.Secrets.Join">
             <summary>
             The secret data that will tell the client how to connect to the game to play. This could be a unique identifier for a fancy match maker or player id, lobby id, etc.
             <para>It is recommended to encrypt this information so its hard for people to replicate it. 
@@ -861,6 +900,10 @@
             </para>
             <para>Max Length of 128 characters</para>
             </summary>
+        </member>
+        <member name="P:DiscordRPC.Secrets.JoinSecret">
+            <summary>Alias of Join</summary>
+            <remarks>This was made obsolete as the property name contains redundant information.</remarks>
         </member>
         <member name="P:DiscordRPC.Secrets.SpectateSecret">
             <summary>
@@ -876,24 +919,26 @@
             The encoding the secret generator is using
             </summary>
         </member>
-        <member name="P:DiscordRPC.Secrets.SecretLength">
+        <member name="F:DiscordRPC.Secrets.SecretLength">
             <summary>
             The length of a secret in bytes.
             </summary>
         </member>
-        <member name="M:DiscordRPC.Secrets.CreateSecret(System.Random)">
+        <member name="M:DiscordRPC.Secrets.CreateSecret(System.Random,System.Int32)">
             <summary>
             Creates a new secret. This is NOT a cryptographic function and should NOT be used for sensitive information. This is mainly provided as a way to generate quick IDs.
             </summary>
             <param name="random">The random to use</param>
-            <returns>Returns a <see cref="P:DiscordRPC.Secrets.SecretLength"/> sized string with random characters from <see cref="P:DiscordRPC.Secrets.Encoding"/></returns>
+            <param name="length">The length of the secret to generate. Defaults to <see cref="F:DiscordRPC.Secrets.SecretLength"/>.</param>
+            <returns>Returns a string with random characters from <see cref="P:DiscordRPC.Secrets.Encoding"/></returns>
         </member>
-        <member name="M:DiscordRPC.Secrets.CreateFriendlySecret(System.Random)">
+        <member name="M:DiscordRPC.Secrets.CreateFriendlySecret(System.Random,System.Int32)">
             <summary>
             Creates a secret word using more readable friendly characters. Useful for debugging purposes. This is not a cryptographic function and should NOT be used for sensitive information.
             </summary>
             <param name="random">The random used to generate the characters</param>
-            <returns></returns>
+            <param name="length">The length of the secret to generate. Defaults to <see cref="F:DiscordRPC.Secrets.SecretLength"/>.</param>
+            <returns>Returns a string with random alphanumeric characters</returns>
         </member>
         <member name="T:DiscordRPC.StatusDisplayType">
             <summary>
