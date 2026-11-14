@@ -2,7 +2,7 @@
 {
 	public class Polish
 	{
-		public static string author = "Ganymede2076";
+		public static string author = "Ganymede2076/Medium bluish violet Marker";
 		public static OWDiscordRPCTranslation Content = new()
 		{
 			TitleScreen = "W tytule.",
@@ -15,29 +15,29 @@
 					Sleeping = "Śpi pod gwiazdami.",
 					LaunchPad = "On the launch pad.",
 					ZeroG = "Eksploruje Jaskinie nieważkości.",
-					Tuff = "Wizutuje Tuf.",
+					Tuff = "Wizytuje Tuf.",
 					Village = "Eksploruje wioske.",
 					Cemetery = "Wizytuje trzmentasz.",
 					LowerVillage = "Eksploruje niższą wioske.",
 					UpperVillage = "Eksploruje wyższą wioske.",
-					Mica = "Wizutuje Mike.",
-					Gneiss = "Wizutuje Gnejs.",
-					Spinel = "Wizutuje Spinel.",
-					Rutile = "Wizutuje Rutyl.",
-					Marl = "Wizutuje Margiel.",
-					Porphy = "Wizutuje Porfi.",
-					Tephra = "Wizutuje Iskrzyk.",
-					Galena = "Wizutuje Galena.",
+					Mica = "Wizytuje Mike.",
+					Gneiss = "Wizytuje Gnejs.",
+					Spinel = "Wizytuje Spinel.",
+					Rutile = "Wizytuje Rutyl.",
+					Marl = "Wizytuje Margiel.",
+					Porphy = "Wizytuje Porfi.",
+					Tephra = "Wizytuje Iskrzyk.",
+					Galena = "Wizytuje Galena.",
 					FoundGalena = "Znalazł Galene.",
 					FoundTephra = "Znalazł Iskryka.",
 					Slate = "Wizytuje Łupko.",
 					Gossan = "Wizytuje Ochran.",
-					Tektite = "Wizutuje Teko.",
-					Arkose = "Wizutuje Arkoza.",
-					Moraine = "Wizutuje Moreana.",
-					Observatory = "Wizutuje Obserwatorium.",
-					Hal = "Wizutuje Hal.",
-					Hornfels = "Wizutuje Hornfels.",
+					Tektite = "Wizytuje Teko.",
+					Arkose = "Wizytuje Arkoza.",
+					Moraine = "Wizytuje Moreana.",
+					Observatory = "Wizytuje Obserwatorium.",
+					Hal = "Wizytuje Hal.",
+					Hornfels = "Wizytuje Hornfels.",
 					Inside = "W środku Drzewnej Przystani.",
 					Crater = "Eksploruje krater.",
 					YoungbarkCrater = "Eksploruje Krater Młodokory.",
@@ -125,7 +125,7 @@
 				},
 				BackerSatellite = new BackerSatellite
 				{
-					Checking = "Sprawdza Backer Satellite."
+					Checking = "Sprawdza satelite zwolenników."
 				},
 				Ship = new Ship
 				{
@@ -140,7 +140,7 @@
 			Custom = new Custom
 			{
 				Exploring = "Eksporuje {0}.",
-				Warping = "Warpuje do {0}."
+				Warping = "Wypaczuje do {0}."
 			}
 		};
 	}
